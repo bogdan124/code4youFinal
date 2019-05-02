@@ -1,0 +1,6 @@
+
+FROM python
+ 
+ADD file.sh /
+ 
+CMD ["bash","/file.sh"]

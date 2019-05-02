@@ -1,0 +1,6 @@
+FROM ruby
+
+ADD file.rb / 
+
+CMD ["ruby","/file.rb"]
+

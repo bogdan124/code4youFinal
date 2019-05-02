@@ -1,0 +1,5 @@
+FROM php
+
+ADD file.php /
+
+CMD ["php","/file.php"]

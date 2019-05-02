@@ -1,0 +1,5 @@
+FROM python
+
+ADD file.py /
+
+CMD ["python","/file.py"]

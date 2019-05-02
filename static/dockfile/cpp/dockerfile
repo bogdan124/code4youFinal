@@ -1,0 +1,5 @@
+FROM gpp
+COPY file /file
+WORKDIR /file/
+RUN g++ -o file file.cpp
+CMD ["./file"]
