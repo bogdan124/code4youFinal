@@ -1,0 +1,111 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  button#add_content {
+      margin-top: 9px;
+      margin-bottom: 22px;
+      margin-left: 50%;
+  }
+  .ougc_annbars_red {
+      display: none;
+  }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<div class="animation">
+  <div id="loader"></div>
+
+
+  </div>
+<body onload="myFunction(0)" style="margin:0;">
+
+<div class="all_content_site_card_commnunity">
+  <div class="col-md-12 design_search">
+
+            <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <input type="text" class="form-control input-lg" onkeydown="myFunction(1)" placeholder="Buscar" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+ <div class="row " id="row_for_show">
+
+
+
+
+
+
+
+
+
+
+</div>
+<button id="add_content" class="btn" onclick="add_content_on_page()" name="add_content">More</button>
+
+
+
+  <script>
+    var start=1;
+    var final1=5;
+    add_content_on_page();
+
+    function add_content_on_page(){
+
+      console.log(start,final1);
+      $.ajax({
+        url: "/select_from_community?limit1="+start+"&limit2="+final1,
+         success: function(result){
+           for(i=0;i<=result.length-1;i++){
+             var show= "<div class='col-md-4 card_position'><div class='card bg-light'>   <img class='card-img-top' src='"+result[i][2]+"' alt='Card image cap'> <div class='card-body'>  <h5 class='card-title border-bottom pb-3'>"+result[i][3]+" <a href='#' class='float-right btn btn-sm btn-info d-inline-flex share'><i class='fas fa-share-alt'></i></a></h5>  <p class='card-text'>"+result[i][4]+"</p>    <div class='rating'>  <input type='radio' id='star10' name='rating' value='10' /><label for='star10' title='Rocks!'>5 stars</label>      <input type='radio' id='star9' name='rating' value='9' /><label for='star9' title='Rocks!'>4 stars</label>    <input type='radio' id='star8' name='rating' value='8' /><label for='star8' title='Pretty good'>3 stars</label>  <input type='radio' id='star7' name='rating' value='7' /><label for='star7' title='Pretty good'>2 stars</label>  <input type='radio' id='star6' name='rating' value='6' /><label for='star6' title='Meh'>1 star</label>   </div>  <a href='/show_comunity_article?id="+result[i][0]+"' class='btn btn-sm btn-info float-right'>Read more <i class='fas fa-angle-double-right'></i></a></div></div></div>";
+             $("#row_for_show").append(show);
+
+           }
+
+           start=final1+1;
+           final1+=5;
+
+
+      }});
+
+    }
+    </script>
+
+<div class="lateral_left_menu">
+
+
+
+</div>
+</div>
+
+<script src="../static/assets/js/comunity_js.js">
+
+
+  </script>
+
+<!--https://bootsnipp.com/snippets/mMBqZ-->

@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+<!--
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>account</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="../static/assets_profile/css/Features-Clean.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Header-Dark.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Profile-Card.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Profile-Picture-With-Badge.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Profile-Picture-With-Badge1.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/style_chart.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/styles.css">
+</head>
+
+<body>
+    <div>
+        <div class="header-dark">
+            <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
+                <div class="container"><a class="navbar-brand" href="#">Code4You</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse"
+                        id="navcol-1">
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#">Home</a></li>
+                            <li class="dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Dropdown </a>
+                                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                            </li>
+                        </ul>
+                        <form class="form-inline mr-auto" target="_self">
+                            <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" name="search" id="search-field"></div>
+                        </form><span class="navbar-text"><a href="#" class="login">Log In</a></span><a class="btn btn-light action-button" role="button" href="#">Sign Up</a></div>
+                </div>
+            </nav>
+            <div class="row" id="the_row_profile">
+                <div class="col" id="the_left_profile" style="/*box-shadow:0px 0px 3px rgb(0, 0, 0);*//*box-shadow:0px 0px 3px rgba(0, 0, 0, 0.25);*/">
+                    <div class="text-center profile-card" style="margin:15px;background-color:#ffffff;">
+                        <div id="all_profile" style="margin-top:34px;">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div id="profile_show"><img class="rounded-circle" src="../static/assets_profile/img/avatar-dhg.png" height="150px" style="border-radius:0% !important;/*margin-top:-70px;*/"><span class="badge badge-primary badge_to_show_the_note">42</span>
+                                            <div id="info_to_show">
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <h3 id="uname_user">Joseph Mancuso</h3>
+                                        <p id="id_content_text" style="margin-bottom:0px;">I am the first developer i am here to learn.I am the first developer i am here to learn.I am the first developer i am here to learn.I am the first developer i am here to learn.I am the first developer i am here
+                                            to learn.I am the first developer i am here to learn.I am the first developer i am here to learn.I am the first developer i am here to learn.I am the first developer i am here to learn.<br><br><br></p>
+                                    </div>
+                                    <div class="col">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Points</th>
+                                                        <th>Badge</th>
+                                                        <th>Views</th>
+                                                        <th>Tutorials</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><span class="badge badge-primary">42</span></td>
+                                                        <td><span class="badge badge-primary">42</span></td>
+                                                        <td><span class="badge badge-primary">42</span></td>
+                                                        <td><span class="badge badge-primary">42</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <ul class="list-group" id="left_side_show">
+                                                    <li class="list-group-item"><i class="icon-clock"></i><span>&nbsp; &nbsp; &nbsp;Member for 2 months</span></li>
+                                                    <li class="list-group-item"><i class="fa fa-clock-o"></i><span>&nbsp; &nbsp; &nbsp;Last seen 23 secs</span></li>
+                                                    <li class="list-group-item"><i class="icon ion-social-freebsd-devil"></i><span>&nbsp; &nbsp; develop 3 projects</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/assets_profile/js/script_chart.js"></script>
+</body>
+
+</html>
+!-->
+
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>account</title>
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+<link rel="stylesheet" href="../static/assets_profile/css/Data-Table.css">
+<link rel="stylesheet" href="../static/assets_profile/css/Features-Clean.css">
+<link rel="stylesheet" href="../static/assets_profile/css/css_list_profile.css">
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jodit/3.1.39/jodit.min.css">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jodit/3.1.39/jodit.min.js"></script>
+<link rel="stylesheet" href="../static/assets/css/css_index2.css">
+</head>
+
+<style>
+button.btn_for_submit {
+    width: 100%;
+    margin-top: 64px;
+}
+.color_red{
+  color:red;
+}
+.class_for_user_profile{
+display: none;
+}
+iframe {
+    border: 0px;
+    height: 500px;
+}
+</style>
+
+  {% include  "files_after_login/header_after_login.html" %}
+
+  {%if print_options==1 %}
+    {%if session['review']==0 %}
+
+    {%endif%}
+  {%endif%}
+
+<div class="container bootstrap snippet">
+
+    <div class="row">
+
+
+    </div>
+        <div class="row main_content">
+      		<div class="col-sm-3"><!--left col-->
+
+
+          <div class="text-center">
+            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar  img-circle img-thumbnail" id="avatar_image" alt="avatar"><!--static/stuff_to_update/user_image/poza2.jpg-->
+            <h3><a id="change-picture" class="user_name"></a></h3>
+
+            <form method="POST" enctype='multipart/form-data' action="/back_upload2">
+              <input type="file" id="file" name="file" class="text-center center-block file-upload"/>
+              <input type="submit" id="submit" name="submit"/>
+            </form>
+
+          </div></hr><br>
+
+          <div class="panel panel-default">
+            <div class="panel-heading">Badges <i class="fa fa-link fa-1x"></i></div>
+            <div class="panel-body"><span class="badge badge-pill badge-warning">Bronze</span>
+              <span class="badge badge-pill badge-warning badge_gold_">Gold</span>
+              <span class="badge badge-pill badge-warning badge_silver_">Silver</span>
+            </div>
+          </div>
+
+              <div class="panel panel-default">
+                <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
+                <div class="panel-body"><a href="http://bootnipets.com"><span class="your_site">bootnipets.com</span></a></div>
+              </div>
+
+              <div class="panel panel-default">
+                <div class="panel-heading">Activity <i class="fa fa-dashboard fa-1x"></i></div>
+                <div class="panel-body">
+                  <ul class="list-group">
+                    <li class="list-group-item text-muted"></li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> <span class="shares"></span></li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> <span class="likes"></span></li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> <span class="posts"></span></li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> <span class="fallowers"></span></li>
+                  </ul>
+                 </div>
+            </div>
+
+
+              <div class="panel panel-default">
+                <div class="panel-heading">Social Media</div>
+                <div class="panel-body">
+                	<i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
+                </div>
+              </div>
+
+            </div><!--/col-3-->
+        	<div class="col-sm-9">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+                    <li><a data-toggle="tab" href="#messages">Settings</a></li>
+                    <li><a data-toggle="tab" href="#settings">Post</a></li>
+                    <li><a data-toggle="tab" href="#your_tut">Tutorials</a></li>
+                    <li><a data-toggle="tab" href="#create_programming_language">Create problems</a></li>
+                     {% if session['review']==0%}
+                      <li><a data-toggle="tab" href="#review">Review <span class="color_red glyphicon glyphicon-alert" aria-hidden="true"></span> </a></li>
+                      {%endif%}
+                  </ul>
+
+                  <script src="../static/assets/js/javascript_js_for_list_profile2.js"></script>
+              <div class="tab-content">
+                <div class="tab-pane" id="your_tut">
+                  <div class="class_all_list">
+                			<ul class="list-group add_to_list" >
+                        <li class="">
+                          <button class="btn btn-primary ladda-button" data-toggle="modal" data-target="#squarespaceModal" data-style="expand-right">
+                              <span class="ladda-label"> Add tutorial </span>
+                          </button>
+                        </li>
+                			<!--	<li class="list-group-item">
+                				<div class="show_text_design">	<a href="#">Vet Appointment!</a></div>
+                          <ul class="list_data list_options_show">
+                            <li class="show_numer_vies all_options">
+                              <div class="show_views">21</div>
+                              <br/>
+                              <div class="show_options_text"><b>Views</b></div></li>
+                            <li class="rating_show all_options">  <div class="show_rating">434</div><br/><div class="show_options_text"><b>Rating</b></div></li>
+                            <li class="abonated all_options">  <div class="show_abonates">434434</div><br/><div class="show_options_text"><b>Abonates</b></div></li>
+                          </ul>
+
+                					<ul class="list-group-submenu">-->
+                          <!--  <li class="list-group-submenu-item "><span class="glyphicon glyphicon-remove"></span></li>-->
+                            <!--   <li class="list-group-submenu-item danger"><span class="glyphicon glyphicon-remove"></span></li>
+                            <li class="list-group-submenu-item success"><span class="glyphicon glyphicon-edit"></span></li>
+                					</ul>
+                				</li>-->
+
+
+
+
+
+                			</ul>
+                		</div>
+                </div>
+
+
+                <div class="tab-pane active" id="home">
+
+                      <form class="form" action="##" method="post" id="registrationForm">
+                        <div class="form_posting">
+                           <div class="container">
+                                <div class="row">
+                                  <div class="span6">
+                                           <form method="POST">
+                                               <div class="controls controls-row">
+                                                   <input id="name" name="name" autocomplete="off" type="text" class="span3" placeholder="Name">
+                                               </div>
+                                               <div class="controls">
+                                                <!-- <div id="editor" class="span6"></div>-->
+                                                   <textarea id="message1" name="message" class="span6" placeholder="Your Description" rows="5"></textarea>
+                                               </div>
+
+                                               <div class="controls">
+                                                   <button id="contact-submit" type="submit" class="btn btn-primary input-medium pull-right">Send</button>
+                                               </div>
+                                           </form>
+                                       </div>
+                                </div>
+                              </div>
+                           </div>
+                  	</form>
+
+
+
+                 </div><!--/tab-pane-->
+
+
+                 <div class="tab-pane" id="messages">
+
+                   <h2></h2>
+
+
+                      <form class="form" action="##" method="post" id="registrationForm">
+
+                          <div class="form-group">
+
+                              <div class="col-xs-6">
+                                  <label for="first_name"><h4>First name</h4></label>
+                                  <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                              </div>
+                          </div>
+                          <div class="form-group">
+
+                              <div class="col-xs-6">
+                                <label for="last_name"><h4>Last name</h4></label>
+                                  <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+
+                              <div class="col-xs-6">
+                                  <label for="phone"><h4>Phone</h4></label>
+                                  <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              <div class="col-xs-6">
+                                 <label for="mobile"><h4>Mobile</h4></label>
+                                  <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
+                              </div>
+                          </div>
+                          <div class="form-group">
+
+                              <div class="col-xs-6">
+                                  <label for="email"><h4>Email</h4></label>
+                                  <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
+                              </div>
+                          </div>
+                          <div class="form-group">
+
+                              <div class="col-xs-6">
+                                  <label for="email"><h4>Location</h4></label>
+                                  <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
+                              </div>
+                          </div>
+                          <div class="form-group">
+
+                              <div class="col-xs-6">
+                                  <label for="password"><h4>Password</h4></label>
+                                  <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
+                              </div>
+                          </div>
+                          <div class="form-group">
+
+                              <div class="col-xs-6">
+                                <label for="password2"><h4>Verify</h4></label>
+                                  <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                               <div class="col-xs-12">
+                                    <br>
+                                  	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                                   	<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                                </div>
+                          </div>
+                  	</form>
+
+                 </div><!--/tab-pane-->
+                 <div class="tab-pane" id="settings">
+
+
+
+                    <div class="form_posting">
+                       <div class="container">
+                           	<div class="row">
+                           		<div class="span6">
+                                       <form method="POST">
+                                           <div class="controls controls-row">
+                                               <input id="name" name="name" type="text" class="span3" placeholder="Name">
+                                           </div>
+                                           <div class="controls">
+                                             <div id="editor" class="span6"></div>
+
+                                               <!--<textarea id="message1" name="message" class="span6" placeholder="Your Description" rows="5"></textarea>-->
+                                           </div>
+
+                                           <div class="controls">
+                                               <button id="contact-submit" type="submit" class="btn btn-primary input-medium pull-right">Send</button>
+                                           </div>
+                                       </form>
+                                   </div>
+                           	</div>
+                          </div>
+                       </div>
+                  </div>
+                  <div class="tab-pane" id="review">
+                    <iframe width="100%" height="100%" src="/popup"></iframe>
+
+                   </div>
+                     <div class="tab-pane" id="create_programming_language">
+                       <div class="tab-content">
+
+                           <div class="class_all_list">
+                              <ul class="list-group add_questions_and_problems" >
+                                 <li class="">
+                                   <button class="btn btn-primary ladda-button" data-toggle="modal" data-target="#myModal" data-style="expand-right">
+                                       <span class="ladda-label"> Add quetions </span>
+                                   </button>
+                                 </li>
+
+
+                              <!--	<li class="list-group-item">
+                                <div class="show_text_design">	<a href="#">Vet Appointment!</a></div>
+                                   <ul class="list_data list_options_show">
+                                     <li class="show_numer_vies all_options">
+                                       <div class="show_views">21</div>
+                                       <br/>
+                                       <div class="show_options_text"><b>Views</b></div></li>
+                                     <li class="rating_show all_options">  <div class="show_rating">434</div><br/><div class="show_options_text"><b>Rating</b></div></li>
+                                     <li class="abonated all_options">  <div class="show_abonates">434434</div><br/><div class="show_options_text"><b>Abonates</b></div></li>
+                                   </ul>
+
+                                  <ul class="list-group-submenu">-->
+                                   <!--  <li class="list-group-submenu-item "><span class="glyphicon glyphicon-remove"></span></li>-->
+                                     <!--   <li class="list-group-submenu-item danger"><span class="glyphicon glyphicon-remove"></span></li>
+                                     <li class="list-group-submenu-item success"><span class="glyphicon glyphicon-edit"></span></li>
+                                  </ul>
+                                </li>-->
+
+
+
+
+
+                              </ul>
+                            </div>
+
+                     </div>
+
+                  </div><!--/tab-pane-->
+              </div><!--/tab-content-->
+
+            </div><!--/col-9-->
+    </div><!--/row-->
+    <div class="modal fade modal_1 modal_total" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+      <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+
+        </div>
+        <div class="modal-body">
+
+                <!-- content goes here -->
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Title</label>
+                    <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Description</label>
+                    <textarea type="password" name="description" class="form-control" id="exampleInputdescrip" ></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Requirements</label>
+                    <textarea type="password" name="requirements" class="form-control" id="exampleInputreq" ></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputFile">File input</label>
+                    <input type="file" name="file" id="exampleInputFile">
+
+                  </div>
+                  <div class="chose_the_price">
+                      <label for="exampleInputFile">Chose a price?</label><br/>
+                    <a class='btn btn-success add_free'>Free</a> <a class=' btn btn-danger add_price'>Price</a>
+
+                  </div>
+                  <button type="submit" id="send_data_to_server_submit_boss_data" class="btn btn_for_submit btn-default">Submit</button>
+
+
+        </div>
+      </div >
+    </div>
+  </div>
+  <script>
+  $("#send_data_to_server_submit_boss_data").click(function(event){
+  $.ajax({
+  		url : "/data_comunity_upload",
+  		method: "POST",
+  		data : {
+        "title":$('#exampleInputEmail1').val(),
+        "descrep":$('#exampleInputdescrip').val(),
+        "require":$('#exampleInputreq').val(),
+        "price":0
+      },
+  	 success: function(result){
+  		console.log(result);
+    }
+
+  });
+  event.preventDefault();
+});
+
+  </script>
+
+        <div class="modal fade modal_total" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-center">
+          <div class="modal-dialog .modal-align-center">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span>
+
+                      </button>
+
+
+                  </div>
+                  <div class="modal-body">
+
+                    <div class="page_1">
+                      <center>
+                      <div class="page_12">Switch what wou want?</div>
+                      <div class="left_problem"><button class="btn btn-primary left">Problem</button></div>
+                        <div class="right_question"><button class="btn btn-primary right">Question</button></div>
+                        </center>
+                    </div>
+
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+
+
+ <script>
+ var editor = new Jodit('#editor', {
+     extraButtons: [
+         {
+             name: 'insertDate',
+             iconURL: '../static/icon/code_add.png',
+             exec: function (editor) {
+                 editor.selection.insertHTML((new Date).toDateString());
+             }
+         }
+     ]
+ })
+ </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="../static/javascript/main_script.js"></script>
+<script>
+extract_user_data(0,".user_name",1);
+extract_user_data(2,".shares",1);
+extract_user_data(3,".likes",1);
+extract_user_data(4,".posts",1);
+extract_user_data(5,".fallowers",1);
+extract_user_data(7,".your_site",1);
+extract_user_data(6,".your_site",0);;
+</script>
+<script>
+add_content_on_page(0,5)
+var start;
+var final;
+function add_content_on_page(i,j){
+
+
+  $.ajax({
+    url: "/select_from_community?limit1=0&limit2=5",
+     success: function(result){
+       for(i=0;i<=result.length-1;i++){
+         var show= " <li class='list-group-item'><div class='show_text_design'>	<a href='/show_comunity_article?id="+result[i][0]+"'>"+result[i][3]+"</a></div><ul class='list_data list_options_show'><li class='show_numer_vies all_options'><div class='show_views'>"+result[i][8]+"</div><br/><div class='show_options_text'><b>Views</b></div></li><li class='rating_show all_options'>  <div class='show_rating'>"+result[i][6]+"</div><br/><div class='show_options_text'><b>Rating</b></div></li> <li class='abonated all_options'>  <div class='show_abonates'>"+result[i][9]+"</div><br/><div class='show_options_text'><b>Abonates</b></div></li></ul> <ul class='list-group-submenu'><li class='list-group-submenu-item danger'><span class='glyphicon glyphicon-remove'></span></li><li class='list-group-submenu-item success'><span class='glyphicon glyphicon-edit'></span></li</ul>                       </li>";
+         $(".add_to_list").append(show);
+
+       }
+
+
+
+  }});
+
+}
+</script>
+<script type="text/javascript">
+    window.alert = function(){};
+    var defaultCSS = document.getElementById('bootstrap-css');
+    function changeCSS(css){
+        if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+        else $('head > link').filter(':first').replaceWith(defaultCSS);
+    }
+    $( document ).ready(function() {
+      var iframe_height = parseInt($('html').height());
+      window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+    });
+</script>

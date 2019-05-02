@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>account</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="../static/assets_profile/css/Data-Table.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Data-Table2.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Dynamic-Table.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Features-Clean.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Header-Blue.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Header-Dark.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Profile-Card.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Profile-Picture-With-Badge.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Profile-Picture-With-Badge1.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/style_chart.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/style_chat.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/styles.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/to-do-list.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+      iframe {
+          width: 50em;
+          height: 23em;
+      }
+      .ougc_annbars_red {
+          display: none;
+      }
+      hr {
+    color: black !important;
+    background-color: black !important;
+    width: 100% !important;
+    margin-bottom: -12px !important;
+    margin-top: -9px !important;
+}
+a.list-group-item {
+    background-color: initial !important;
+}
+a.list-group-item {
+    font-size: 13px;
+    line-height: 16px;
+    -moz-transition: all .3s;
+    -o-transition: all .3s;
+    -webkit-transition: all .3s;
+    background-position: 3px 11px;
+    background-repeat: no-repeat;
+    border-bottom: 1px dotted #000 !important;
+    padding: 8px 17px;
+    transition: all .3s;
+}
+.Title_lanuage {
+    background-color: gold;
+    width: 100%;
+}
+i.material-icons.sho_position_icon {
+    position: absolute;
+    left: -5px;
+    top: 3px;
+}
+a.list-group-item:hover {
+    background-color: #d6d6d6 !important;
+}
+    </style>
+</head>
+
+<body>
+    {% include  "files_after_login/header_after_login.html" %}
+    {% block body%}
+    <div class="container">
+        <div class="row" id="to_SeE_dOWn" style="height:45px;"></div>
+        <div class="row">
+            <div class="col" id="chose_to_display"><div><div class="panel panel-primary">
+                <div class="panel-heading">
+                    <!--<h3 class="panel-title">
+                        Panel Primary</h3>-->
+                </div>
+                <div class="Title_lanuage"><center><h1><span class="title_language_to_show">Html5</span></h1></center></div>
+                <ol class="list-group">
+
+                    <!--<a href="#" class="list-group-item">Cras justo odio</a>
+                    <a href="http://www.jquery2dotnet.com/2014/01/jquery-export-table-data-into-ms-excel.html" class="list-group-item active">Dapibus ac facilisis in</a>
+                  -->
+                </ol>
+            </div></div></div>
+            <div class="col col-lg-9"><div>
+<div class="panel panel-primary">
+                <div class="panel-heading">
+                    <!--<h3 class="panel-title">
+                        Panel Primary</h3>-->
+                </div>
+                <div class="the_conent_text">
+                  <div class="display_the_content">
+                  </div>
+
+                </div>
+            </div>
+
+</div></div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+
+    <script src="../static/javascript/main_script.js"></script>
+
+
+    <script>
+    //https://bootsnipp.com/snippets/K0QXQ -editor
+    //https://bootsnipp.com/snippets/O5xNM -draw editor
+    //https://bootsnipp.com/snippets/5MdO7 -"react html editor"
+    //https://bootsnipp.com/snippets/bxjRr -svg editor
+    //https://bootsnipp.com/snippets/nNZZk -gradient
+  //  init({{id1}});
+    load_tutorials({{id1}},{{id_articol}},".title_language_to_show",2," WHERE page={{id_page}} AND articol={{id_articol}}");
+    load_tutorials({{id1}},{{id_articol}},".list-group",0,"");
+    load_tutorials({{id1}},{{id_articol}},".display_the_content",1," AND page='{{id1}}'");
+    </script>
+
+    {% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+
+<style>
+  div#modebar-45fe3f {
+      display: none !important;
+  }
+  </style>
+
+
+
+
+<div id="tester" style="    margin-bottom: 118px ;width:90%;height:250px;"></div>
+<script>
+  var data = [{
+    values: [19, 26, 55],
+    labels: ['Use_today', 'Used_now', 'Used_this_week'],
+    type: 'pie'
+  }];
+
+  var layout = {
+    height: 400,
+    width: 500
+  };
+
+  Plotly.newPlot('tester', data, layout);
+</script>
+<table id="example_table1" data-page-length='25' class="table table-striped table-bordered table_move_down" style="width:100%">
+
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Username</th>
+                <th>Date</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+          {%for i in sql%}
+            <tr>
+                <td>{{i[0]}}</td>
+                <td>{{i[1]}}</td>
+                <td>{{i[2]}}</td>
+                <td><p><button type="button" id="btn_edit" class="btn" name="button">Edit</button>  <button type="button" class="btn btn-danger">Delete</button></p></td>
+            </tr>
+            {%endfor%}
+
+        </tbody>
+
+    </table>

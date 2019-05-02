@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>account</title>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="../static/assets_profile/css/Data-Table.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Data-Table2.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Dynamic-Table.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Features-Clean.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Header-Blue.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Header-Dark.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Profile-Card.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Profile-Picture-With-Badge.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Profile-Picture-With-Badge1.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/style_chart.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/style_chat.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/styles.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/to-do-list.css">
+    <style>
+      a#logout {
+          display: none;
+      }
+      body {
+    background: #dedede;
+}
+.page-wrap {
+    min-height: 80vh;
+}
+.ougc_annbars_red {
+    display: none;
+}
+body{
+    background: #eee;
+}
+span{
+    font-size:15px;
+}
+
+.box{
+    padding:60px 0px;
+}
+
+.box-part{
+    background:#FFF;
+    border-radius:0;
+    padding:60px 10px;
+    margin:30px 0px;
+}
+.text{
+    margin:20px 0px;
+}
+
+.fa{
+     color:#4183D7;
+}
+.design__1 {
+width: 100px;
+height: 100px;
+border-radius: 100%;
+}
+.iframe1,.this_over{
+  z-index:2;
+}
+.over_code {
+    z-index: 12;
+    position: relative;
+    width: 100%;
+    height: 300px;
+    /* background-color: wheat; */
+    top: 300px;
+}
+.text {
+    margin-top: -290px !important;
+}
+.modal-backdrop.in {
+    display: none;
+}
+.md_cls {
+      width: 80% !important;
+      height: 93% !important;
+      margin-left: 117px !important;
+}
+button.btn.btn-danger {
+    float: right;
+    position: relative;
+    bottom: -541px;
+}
+.modal-title {
+    margin-bottom: 0;
+    line-height: 1.5;
+    margin-left: 31px;
+}
+button.close {
+    position: relative;
+    left: -19px;
+    top: 13px;
+}
+.show_this{
+  width: 80%;
+  height: 100%;
+  margin-left: 205px;
+    margin-top: -100px;
+}
+.left_this{
+  width: 200px;
+}
+iframe.show_this {
+    height: 39em;
+}
+iframe.show_this {
+    margin-top: -124px;
+}
+.text___{
+  margin-top: -219px;
+      margin-left: 204px;
+      /* margin-right: -30px; */
+      height: 66px;
+      width: 592px;
+}
+.text_to_show{
+  margin-top: -130px;
+}
+    </style>
+</head>
+
+{% include  "files_after_login/header_after_login.html" %}
+
+{% if session['id'] is not defined%}
+<div class="page-wrap d-flex flex-row align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 text-center">
+                <span class="display-1 d-block">404</span>
+                <div class="mb-4 lead">The page you are looking for was not found.Probably you are not login or you don't have an account.</div>
+                <a href="http://localhost:5000" class="btn btn-link">Back to Home</a>
+                or
+                <a href="/show_code_platform" class="btn btn-link">Embed code</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+{%endif%}
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+<div class="box">
+    <div class="container">
+     	<div class="row">
+{%for i in sql1%}
+{%for j in sql2%}
+    {% if i[3]==j[0]%}
+			    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+					<div class="box-part text-center">
+
+              <img class="design__1" src="{{j[7]}}"></img>
+
+                    <!--    <b class=" fa-3x" aria-hidden="true">{}</b>-->
+
+						<div class="title">
+							<h4>{{i[2]}}</h4>
+						</div>
+
+						<div class="text">
+              <div class="over_code"></div>
+							<iframe src="http://localhost:5000/visualize_code?id={{i[0]}}" class="iframe1" style="border:0px; overflow:hidden;" width="100%" height="300px"></iframe>
+						</div>
+
+            <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_{{i[0]}}">Learn more</button>
+
+
+					 </div>
+				</div>
+        <div class="modal md_cls" id="myModal_{{i[0]}}">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">{{i[5]}}</h4>
+
+              </div>
+              <div class="content">
+
+                <div class="left_this">
+              <ul class="list-group">
+
+                <li class="list-group-item" onclick="show_function(1,'{{i[4]}}')">Description</li>
+                <li class="list-group-item active" onclick="show_function(2,'http://localhost:5000/visualize_code?id={{i[0]}}')">Code</li>
+                <li class="list-group-item" onclick="show_function(3,'{{i[0]}}')">Embed</li>
+                <li class="list-group-item"><div class='execute_code'><a href="/compile_python?code_id={{i[0]}}&language={{i[2]}}">Execute</a></div></li>
+              </ul>
+            </div>
+            </div>
+            <div class="right_show">
+              <div class='text_to_show text___'>	{{i[4] | safe}}</div>
+            </div>
+
+
+
+
+
+
+          <!--  <button type="button" class="btn move_down_button btn-danger" data-dismiss="modal">Close</button>-->
+        </div>
+
+        {%endif%}
+    {%endfor%}
+
+{%endfor%}
+
+
+		</div>
+    </div>
+</div>
+<script>
+
+function show_function(i,asd){
+
+  if(i==1){
+    $(".right_show").html("<div class='text_to_show text___'>"+asd+"</div>");
+  }
+  if(i==2){
+    $(".right_show").html("<iframe class=' notranslate show_this' src='"+asd+"' style='border:0px; overflow:hidden;' width='40%' height='300px' ></iframe>");
+  }
+  if(i==3){
+    $(".right_show").html(`<div class='embed_code'><textarea class='text___' readonly='readonly'><iframe class="notranslate show_this" src="http://localhost:5000/visualize_code?id=`+asd+`" style="border:0px; overflow:hidden;" width="100%" height="200px" ></iframe></textarea></div>`);
+  }
+}
+</script>

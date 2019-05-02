@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>account</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="../static/assets_profile/css/Data-Table.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Data-Table2.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Dynamic-Table.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Features-Clean.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Header-Blue.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Header-Dark.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Profile-Card.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Profile-Picture-With-Badge.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Profile-Picture-With-Badge1.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/style_chart.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/style_chat.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/styles.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/to-do-list.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+      iframe {
+          width: 50em;
+          height: 23em;
+      }
+      hr {
+    color: black !important;
+    background-color: black !important;
+    width: 100% !important;
+    margin-bottom: -12px !important;
+    margin-top: -9px !important;
+}
+a.list-group-item {
+    background-color: initial !important;
+}
+a.list-group-item {
+    font-size: 13px;
+    line-height: 16px;
+    -moz-transition: all .3s;
+    -o-transition: all .3s;
+    -webkit-transition: all .3s;
+    background-position: 3px 11px;
+    background-repeat: no-repeat;
+    border-bottom: 1px dotted #000 !important;
+    padding: 8px 17px;
+    transition: all .3s;
+}
+.Title_lanuage {
+    background-color: gold;
+    width: 100%;
+}
+i.material-icons.sho_position_icon {
+    position: absolute;
+    left: -5px;
+    top: 3px;
+}
+a.list-group-item:hover {
+    background-color: #d6d6d6 !important;
+}
+.ougc_annbars_red {
+    display: none;
+}
+.imgtitreartcile
+{
+    width:  160px;
+    height: 160px;
+}
+.imgfeatured{
+    width:  50%;
+    height: 50%;
+}
+.more.label {
+    float:right;
+}
+.contenuCentre{
+    margin-top:10px;
+}
+.sidebardRight{
+    margin-top:10px;
+}
+.contenuFeatured {
+    background-color: transparent;
+    background-image: url('http://www.millenium.org/images/layout/shadow-top-v3.png') ;
+    background-repeat: no-repeat;
+    background-position: right top ;
+}
+.contenuArticles{
+    margin-right:15px;
+    margin-left:15px;
+
+}
+.actualité{
+    background: transparent url('http://www.millenium.org/images/layout/shadow-full-v2.png') repeat-y top right;
+}
+.corps{
+    border: 1px solid #bfc6cb;
+    margin-top: 100px;
+
+}
+.article{
+   padding: 12px 0 12px 0;
+    padding-top: 12px;
+    padding-right: 0px;
+    padding-bottom: 12px;
+    padding-left: 0px;
+border-bottom: 1px solid #E5E6E7;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(229, 230, 231);
+
+}
+.article:hover{
+    background-color: #e1e1e1 ;
+}
+
+.thumbnail:before {
+    content:'';
+	position: absolute;
+	bottom:0px;
+	left: 0px;
+	width: 5px;
+	height: 0px;
+	background: rgba(255,255,255,0.3);
+	border-radius: 5px;
+	transition: all 0.1s ease;
+}
+
+.thumbnail:hover:before {
+    height: 100%;
+}
+
+body{
+  background-color:white !important;;
+}
+
+a#logout {
+    display: none;
+}
+    </style>
+</head>
+
+<body>
+    {% include  "files_after_login/header_after_login.html" %}
+
+    <div class="container">
+      <div class="row" >
+
+
+               <div class=" row actualité">
+                   <div class="row contenuArticles">
+
+                     {% for i in select_masterpiece %}
+                   <div class="row article"  >
+                       <div class="media">
+                           <div class="col-lg-3">
+                                <img class="imgtitreartcile img-rounded" src="{{i[6]}}" >
+                           </div>
+                           <div class="media-body col-lg-9">
+                               <h5 class="mt-0">{{i[2]}}</h5>
+                              <p> {{i[1]}}</p>
+                           <div class="more label"><a href="/article_masterpiece_page?id={{i[0]}}">Read</a></div>
+                           <div class="btn-group ">
+                               <button class="btn btn-default"> Organization</button>
+                               <button class="btn btn-default"> Rate</button>
+                               <button class="btn btn-default"> Complete {{i[4]}}%</button><!--percentage of peoaple that rate the article-->
+                           </div>
+                           </div>
+                       </div>
+                   </div>
+                   {% endfor %}
+
+               </div>
+
+               </div>
+
+
+       </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+
+    <script src="../static/javascript/main_script.js"></script>
+
+
+    <script>
+      function active(event)
+{
+
+    var elt = event.target
+  //  $(elt).attr('style', 'background-color: blue !important');
+}
+    //https://bootsnipp.com/snippets/K0QXQ -editor
+    //https://bootsnipp.com/snippets/O5xNM -draw editor
+    //https://bootsnipp.com/snippets/5MdO7 -"react html editor"
+    //https://bootsnipp.com/snippets/bxjRr -svg editor
+    //https://bootsnipp.com/snippets/nNZZk -gradient
+  //  init({{id1}});
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,339 @@
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!------ Include the above in your HEAD tag ---------->
+
+
+
+  <meta charset='UTF-8'>
+  <meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
+  <link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
+  <link rel="canonical" href="https://codepen.io/Diakogiannis/pen/XdpjEJ?limit=all&page=12&q=editor" />
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.44.0/codemirror.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.44.0/theme/3024-night.css">
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.44.0/codemirror.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.44.0/mode/python/python.js"></script>
+  <script src="http://www.skulpt.org/static/skulpt.min.js" type="text/javascript"></script>
+  <script src="http://www.skulpt.org/static/skulpt-stdlib.js" type="text/javascript"></script>
+
+<style class="cp-pen-styles">* {
+	margin:0;
+	padding:0;
+}
+
+body {
+	font-family:tahoma;
+	color:white;
+	box-sizing: border-box;
+}
+
+#wrapper {
+	width:100%;
+	height:100%;
+	box-sizing: border-box;
+}
+
+nav {
+	width:100%;
+	background:green;
+	height:60px;
+}
+
+ nav section, nav ul {
+	display:inline-block;
+}
+
+#logo {
+	position:relative;
+	width:15%;
+	text-align:center;
+	height:30px;
+	bottom:20px;
+	margin-left:2%;
+	box-sizing: border-box;
+}
+
+#buttonDiv {
+	position:absolute;
+	width:20%;
+	text-align:center;
+	right:0px;
+	margin-right:2%;
+	top:10px;
+	height:30px;
+}
+
+#buttonDiv button {
+	width:50%;
+	border-radius:10px;
+	background:#fff;
+	color:#000;
+	font-size:1.2em;
+	height:40px;
+  border:none;
+  transition:all 0.2s linear;
+}
+
+#buttonDiv button:hover {
+  background:#000;
+  color:#fff;
+  cursor:pointer;
+}
+
+#toggles {
+	margin-left:7%;
+	padding:0;
+	text-align:center;
+	list-style-type: none;
+	width:50%;
+	height:100%;
+}
+
+#toggles li {
+	float:left;
+
+	margin-top:0px;
+	padding:0;
+	width:25%;
+	box-sizing: border-box;
+	height:100%;
+  transition:background 0.3s linear;
+}
+
+#toggles li:hover {
+  background:darkgreen;
+  cursor:pointer;
+}
+
+.codeContainer {
+	float:left;
+	margin:0;
+	padding:0;
+	border-right:1px solid black;
+	box-sizing: border-box;
+	width:50%;
+}
+
+.codeContainer textarea {
+	width:100%;
+	height:100%;
+	border:none;
+	font-family:monotype;
+
+	padding:2%;
+	box-sizing: border-box;
+}
+
+.codeContainer textarea:focus {
+	outline:none;
+}
+
+h3 {
+	color:black;
+	float:right;
+	margin-right:3%;
+	margin-top:5px;
+}
+
+#cssContainer, #javascriptContainer {
+	display:none;
+}
+
+iframe {
+	display:block;
+	height:100%;
+	width:80%;
+	margin:auto;
+	box-sizing: border-box;
+	border:none;
+}
+
+li.active {
+	background:darkgreen;
+}
+
+h5 {
+	display:block;
+	width:100%;
+	margin-top:20px;
+}
+
+h2 {
+	display:block;
+	width:100%;
+}
+.CodeMirror.cm-s-default {
+
+
+}
+.CodeMirror {
+height:65.8em  !important;
+}
+
+body {
+  margin: 0px;
+}
+.edoutqqput {
+    background: #ccc;
+    color: #black;
+    height: 34em;
+    overflow: auto;
+    font-family: "Consolas","Lucida Console","Monaco",monospace;
+
+}
+.edoutqqput1{
+  background-color:;
+}
+.go_top {
+    z-index: 100;
+}
+</style>
+<body>
+			<section id='wrapper'>
+				<nav id="menu">
+					<section id="logo"><h2>Dcode</h2></section>
+					<section id="buttonDiv" class="button_add_run"></section>
+					<ul id="toggles">
+						<li class="active name_language" id="html"></li>
+
+						<li id="result" class="active"><h5>Result</h5></li>
+					</ul>
+				</nav>
+				<section class="codeContainer" id="htmlContainer">
+					<!--<div class="go_top"><h3>HTML</h3></div><br/><br/>-->
+          {%for i in fetch%}
+        <textarea class="codemirror-textarea" id="yourcode">{{i[1]}}</textarea>
+          {%endfor%}
+
+
+
+
+
+
+
+				</section>
+
+
+
+
+
+				<section class="codeContainer code_conta" id="resultContainer">
+				<!--	<div class="go_top"><h3>Text result</h3></div>-->
+        <pre id="output" class="edoutqqput"></pre>
+          <div id="mycanvas" class="edoutqqput1"></div>
+        <!--  <iframe id='iframe1'></iframe>-->
+				</section>
+			</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</body>
+<script>
+var get_url=window.location.href;
+var url = new URL(get_url);
+var code_id = url.searchParams.get("code_id");
+var language = url.searchParams.get("language");
+console.log(code_id,language);
+
+evaluate_language(language,code_id);
+function evaluate_language(language1,code_id1){
+
+  if(language1=="Python" || language1=="Ruby" || language1=="Cpp" || language1=="Bash"){
+    $(".button_add_run").html("<button id='runButton' onclick='runit()'>Run</button>");
+    $(".name_language").html("<h5>"+language1+"</h5>");
+  }
+   if(language1=="Html"){
+    $(".button_add_run").html("<button id='runButton' onclick='runhtml()'>Run</button>");
+    $(".name_language").html("<h5>"+language1+"</h5>");
+    $(".code_conta").html("<iframe width='100%' id='iframe1'></iframe>");
+    $(".edoutqqput").remove();
+    $(".edoutqqput1").remove();
+
+
+  }
+
+}
+
+
+
+  var code = $(".codemirror-textarea")[0];
+  var editor = CodeMirror.fromTextArea(code, {
+    lineNumbers : true,
+    theme :"3024-night"
+  });
+
+
+
+
+function runhtml(){
+       var textareaValue =editor.getValue();
+      // var myFrame = $("#myframe").contents().find('html');
+    //   $("#myframe").load(function(e){
+  //      $(this).contents().find('html').html("<h1 style='text-align: center;color:red;'>This IS an iframe</h1>");
+  //  });
+  $('#iframe1').contents().find('html').html(textareaValue);
+
+
+}
+
+
+
+
+function outf(text) {
+    var mypre = document.getElementById("output");
+    mypre.innerHTML = mypre.innerHTML + text;
+}
+function builtinRead(x) {
+    if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
+            throw "File not found: '" + x + "'";
+    return Sk.builtinFiles["files"][x];
+}
+
+function runit() {
+   var prog =editor.getValue();
+
+   var mypre = document.getElementById("output");
+
+   $.ajax({
+	url: "/code_analise?language="+language, 
+	method: "POST",
+        contentType: "application/json;charset=utf-8",
+	data:JSON.stringify({
+	"data":	prog
+	}),
+	success: function(result){
+    	   $(".edoutqqput").html(result);
+   	}
+  });    
+	
+
+   mypre.innerHTML = '';
+   Sk.pre = "output";
+   console.log(mypre,prog);
+   Sk.configure({output:outf, read:builtinRead});
+   (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
+   var myPromise = Sk.misceval.asyncToPromise(function() {
+       return Sk.importMainWithBody("<stdin>", false, prog, true);
+   });
+   myPromise.then(function(mod) {
+       console.log('success');
+   },
+       function(err) {
+       console.log(err.toString());
+   });
+}
+</script>

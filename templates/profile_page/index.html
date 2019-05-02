@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>account</title>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="../static/assets_profile/css/Data-Table.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Data-Table2.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Dynamic-Table.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Features-Clean.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Header-Blue.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Header-Dark.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Profile-Card.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Profile-Picture-With-Badge.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/Profile-Picture-With-Badge1.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/style_chart.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/style_chat.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/styles.css">
+    <link rel="stylesheet" href="../static/assets_profile/css/to-do-list.css">
+</head>
+
+<body>
+    <div></div>
+    <div>
+        <div class="header-dark">
+                {% include  "files_after_login/header_after_login.html" %}
+            <div class="row" id="the_row_profile">
+                <div class="col" id="the_left_profile" style="/*box-shadow:0px 0px 3px rgb(0, 0, 0);*//*box-shadow:0px 0px 3px rgba(0, 0, 0, 0.25);*/">
+                    <div class="text-center profile-card" style="margin:15px;background-color:#ffffff;">
+                        <div id="all_profile" style="/*margin-top:-112px;*/">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div id="profile_show"><img class="rounded-circle" src="../static/assets_profile/img/avatar-dhg.png" height="150px" style="border-radius:0% !important;/*margin-top:-70px;*/"><span class="badge badge-primary badge_to_show_the_note">42</span>
+                                            <div id="info_to_show">
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col" style="margin:0px;margin-top:65px;">
+                                        <h3 id="uname_user" style="margin:0px;">Joseph Mancuso</h3>
+                                        <p id="id_content_text" style="margin-bottom:0px;">I am the first developer i am here to learn.I am the first developer i am here to learn.I am the first developer i am here to learn.I am the first developer i am here to learn.I am the first developer i am here
+                                            to learn.I am the first developer i am here to learn.I am the first developer i am here to learn.I am the first developer i am here to learn.I am the first developer i am here to learn.<br><br><br></p>
+                                    </div>
+                                    <div class="col">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Points</th>
+                                                        <th>Badge</th>
+                                                        <th>Views</th>
+                                                        <th>Tutorials</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><span class="badge badge-primary badge_data">42</span></td>
+                                                        <td><span class="badge badge-primary badge_data">42</span></td>
+                                                        <td><span class="badge badge-primary badge_data">42</span></td>
+                                                        <td><span class="badge badge-primary badge_data">42</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <ul class="list-group" id="left_side_show">
+                                                    <li class="list-group-item"><i class="icon-clock"></i><span>&nbsp; &nbsp; &nbsp;Member for 2 months</span></li>
+                                                    <li class="list-group-item"><i class="fa fa-clock-o"></i><span>&nbsp; &nbsp; &nbsp;Last seen 23 secs</span></li>
+                                                    <li class="list-group-item"><i class="icon ion-social-freebsd-devil"></i><span>&nbsp; &nbsp; develop 3 projects</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="id_row_down" style="margin:0px;margin-top:46px;"><div class="col col-sm-12 col-lg-12 col-xs-12 my_class_table">
+    <div class="the_project_names">
+    Projects
+    </div>
+  <div class="btn-toolbar">
+    <button class="btn btn-primary">New User</button>
+    <button class="btn">Import</button>
+    <button class="btn">Export</button>
+</div>
+<div class="well">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Username</th>
+          <th style="width: 36px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Mark</td>
+          <td>Tompson</td>
+          <td>the_mark7</td>
+          <td class="special_padding">
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Ashley</td>
+          <td>Jacobs</td>
+          <td>ash11927</td>
+          <td class="special_padding">
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Audrey</td>
+          <td>Ann</td>
+          <td>audann84</td>
+          <td class="special_padding">
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>John</td>
+          <td>Robinson</td>
+          <td>jr5527</td>
+          <td class="special_padding">
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Aaron</td>
+          <td>Butler</td>
+          <td>aaron_butler</td>
+          <td class="special_padding">
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Chris</td>
+          <td>Albert</td>
+          <td>cab79</td>
+          <td class="special_padding">
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<div class="pagination">
+    <ul>
+        <li><a href="#">Prev</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">Next</a></li>
+    </ul>
+</div>
+<div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <center><h3 id="myModalLabel">Delete Confirmation</h3></center>
+    </div>
+    <div class="modal-body">
+        <p class="error-text">Are you sure you want to delete the user?</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <button class="btn btn-danger" data-dismiss="modal">Delete</button>
+    </div>
+</div>
+</div></div>
+        </div><div id="add_chat">   <div class="round hollow text-center">
+        <a href="#" id="addClass"><span class="glyphicon glyphicon-comment"></span> Open in chat </a>
+        </div>
+        </div></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <script src="../static/assets_profile/js/Dynamic-Table.js"></script>
+    <script src="../static/assets_profile/js/script_chart.js"></script>
+</body>
+
+</html>

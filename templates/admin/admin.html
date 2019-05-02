@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+      <link rel="stylesheet" hre="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
+
+    <title>Dashboard Template for Bootstrap</title>
+<style>
+
+</style>
+    <!-- Bootstrap core CSS -->
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- Custom styles for this template -->
+    <link href="../static/admin_css/dashboard.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">{ Code4You }</a>
+      <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="/logout">Sign out</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" id="dashboard" href="?page=1&id={{session['id']}}&connect=connect">
+                  <span data-feather="home"></span>
+                  Dashboard <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="users" href="?page=2&id={{session['id']}}&connect=connect">
+                  <span data-feather="users"></span>
+
+                  Users
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="article" href="?page=3&id={{session['id']}}&connect=connect">
+                  <span data-feather="file"></span>
+                  Article
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="3_menu" href="#">
+                  <span data-feather="users"></span>
+                  Customers
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="bar-chart-2"></span>
+                  Reports
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="integration" href="?page=4&id={{session['id']}}&connect=connect">
+                  <span data-feather="layers"></span>
+                  Integrations
+                </a>
+              </li>
+            </ul>
+
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Saved reports</span>
+              <a class="d-flex align-items-center text-muted" href="#">
+                <span data-feather="plus-circle"></span>
+              </a>
+            </h6>
+            <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-text"></span>
+                  Current month
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-text"></span>
+                  Last quarter
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-text"></span>
+                  Social engagement
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-text"></span>
+                  Year-end sale
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main id="load_dataa_page" role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+
+        </main>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Icons -->
+
+
+
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+
+
+
+
+
+
+
+
+      page_redirect();
+      feather.replace()
+      var editor;
+      $(document).ready(function() {
+/*
+        editor = new $.fn.dataTable.Editor( {
+          table: "#example_table1",
+          fields: [ {
+                  label: "id:",
+                  name: "first_name"
+              }, {
+                  label: "Username:",
+                  name: "last_name"
+              }, {
+                  label: "Position:",
+                  name: "position"
+              }, {
+                  label: "Office:",
+                  name: "office"
+              }, {
+                  label: "Extension:",
+                  name: "extn",
+                  multiEditable: false
+              }, {
+                  label: "Start date:",
+                  name: "start_date",
+                  type: "datetime"
+              }, {
+                  label: "Salary:",
+                  name: "salary"
+              }
+          ]
+      } );
+*/
+
+          $('#example_table1').DataTable( {
+              paging: true,
+               ordering: true,
+                searching: true,
+              scrollY: 400,
+              buttons: [
+            { extend: "create", editor: editor },
+            { extend: "edit",   editor: editor },
+            { extend: "remove", editor: editor }
+        ]
+          });
+
+
+
+      } );
+      function remove_class(){
+
+      $("#dashboard").removeClass("active");
+      $("#users").removeClass("active");
+      $("#article").removeClass("active");
+      $("#integration").removeClass("active");
+      }
+
+      function page_redirect(){
+
+        var url = new URL(window.location.href);
+
+          var query_string = url.search;
+
+          var search_params = new URLSearchParams(query_string);
+
+          var page = search_params.get('page');
+
+
+            if (page==1) {
+              remove_class();
+              $("#load_dataa_page").load("/dashboard_ne1");
+              $("#dashboard").addClass("active");
+            }else  if(page==2){
+              remove_class();
+              $("#load_dataa_page").load("/dashboard");
+              $("#users").addClass("active");
+
+          }else if(page==3){
+            remove_class();
+            $("#load_dataa_page").load("/articles");
+            $("#article").addClass("active");
+          }else if(page==4){
+            remove_class();
+            $("#load_dataa_page").load("/integration");
+            $("#integration").addClass("active");
+          }
+      }
+
+
+
+
+
+
+
+
+</script>
+
+
+
+  </body>
+</html>

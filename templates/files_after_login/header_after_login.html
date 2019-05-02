@@ -1,0 +1,125 @@
+<nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
+    <div class="container"><a class="navbar-brand" href="#"><b>{ Code4You }</b></a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse"   id="navcol-1">
+            <ul class="nav navbar-nav">
+                <li class="nav-item" id="home_site" role="presentation"><a class="nav-link active" href="/">Home</a></li>
+                <li class="nav-item" id="tutorials_site" role="presentation"><a class="nav-link active" href="/tutorials_out">Tutorials</a></li>
+                    <li class="nav-item" id="tutorials_site" role="presentation"><a class="nav-link active" href="/community">Community</a></li>
+                      <li class="nav-item" id="tutorials_site" role="presentation"><a class="nav-link active" href="/masterpiece">Masterpiece</a></li>
+
+
+                <li class="dropdown" id="api_dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" style="color:#ffffff;">Api</a>
+                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                </li>
+                <li class="dropdown">
+
+                   <ul class="list-notificacao dropdown-menu">
+                     {% if session['review']==0%}
+                     <li id='item_notification_1'>
+                         <div class="media">
+                            <div class="media-left">
+                               <a href="#">
+                               <img alt="64x64" class="media-object" data-src="holder.js/64x64" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWZhMWJmZmI3MCB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1ZmExYmZmYjcwIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMy40Njg3NSIgeT0iMzYuNSI+NjR4NjQ8L3RleHQ+PC9nPjwvZz48L3N2Zz4=" data-holder-rendered="true"> </a>
+                            </div>
+                            <div class="media-body">
+                               <div class='exclusaoNotificacao'><button class='btn btn-danger btn-xs button_exclusao' id='1' onclick='excluirItemNotificacao(this)'>x</button>
+                               </div>
+                               <h4 class="media-heading">Welcome!</h4>
+                               <p>Please help us with text and informations.</p>
+                            </div>
+                         </div>
+                      </li>
+
+                      <li id='item_notification_2'>
+                         <div class="media">
+                            <div class="media-left">
+                               <a href="#">
+                               <img alt="64x64" class="media-object" data-src="holder.js/64x64" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWZhMWJmZmI3MCB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1ZmExYmZmYjcwIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMy40Njg3NSIgeT0iMzYuNSI+NjR4NjQ8L3RleHQ+PC9nPjwvZz48L3N2Zz4=" data-holder-rendered="true"> </a>
+                            </div>
+                            <div class="media-body">
+                               <div class='exclusaoNotificacao'><button class='btn btn-danger btn-xs' id='2' onclick='excluirItemNotificacao(this)'>x</button>
+                               </div>
+                               <h4 class="media-heading">The Review</h4>
+                               <p>Please take our review.This will help us to give you the best personalized content that we can give it to you.This will include the informations(the content of the informations be will on your level of knowledge) and the acces that you will have on the platform in the future.</p>
+                            </div>
+                         </div>
+                      </li>
+                      {% endif %}
+
+                      <li id='item_notification_2'>
+                         <div class="media">
+                          <div class="more_this"><center> <b>More</b></center></div>
+                         </div>
+                      </li>
+                   </ul>
+                </li>
+            </ul>
+            <form class="form-inline mr-auto" target="_self">
+                <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" name="search" id="search-field"></div>
+            </form>
+            <!--<span class="navbar-text"> <a href="/login" class="login" style="color:rgb(255,255,255);"></a></span>-->
+            <a class="btn btn-light action-button"  id="logout" role="button" href="/register" style="color:rgb(255,255,255);">Log out</a></div>
+            {% if session['id'] is defined %}
+                <a class="nav-link active class_for_user_profile" href="/profile2?id={{session['id']}}&connect=connect"><img width="30px" height="30px" src="https://image.flaticon.com/icons/png/128/149/149071.png"/></a>
+            {% else %}
+
+            {% endif %}
+    <div>
+</nav>
+{% if session['review']==0%}
+<div class="container">
+	<div class="row">
+    <center>
+
+        <div class="ougc_annbars_red"><strong>Review<button type="button" class="close move_left" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button></strong></div>
+
+       </center>
+	</div>
+</div>
+{% else %}
+
+{% endif %}
+<!--<link href="https://unpkg.com/primer/build/build.css" rel="stylesheet">-->
+
+<style>
+  nav.navbar.navbar-dark.navbar-expand-md.navigation-clean-search {
+      height: 50px !important;
+    }
+    nav > .container {
+    margin-top: -8px !important;
+}
+  .ougc_annbars_red {
+    margin-top: -20px;
+      padding: 2px;
+    border: 1px solid ;
+    background: #ff3d3d;
+    background: -moz-linear-gradient(top, #ff3d3d 0%, #ff2929 100%);
+    background: -webk border:1px solid #b00 !important;
+    it-gradient(linear, left top, left bottom, color-stop(0%,#ff3d3d), color-stop(100%,#ff2929)): ;
+    background: -webkit-linear-gradient(top, #ff3d3d 0%,#ff2929 100%);
+    background: -o-linear-gradient(top, #ff3d3d 0%,#ff2929 100%);
+    background: -ms-linear-gradient(top, #ff3d3d 0%,#ff2929 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3d3d', endColorstr='#ff2929',GradientType=0 );
+    background: linear-gradient(top, #ff3d3d 0%,#ff2929 100%);
+    color: white;
+      width: 1694%;
+}
+  .move_left{
+    float:right;
+  }
+.red_attention{
+  font-size:10px;
+  width:100%;
+  height:15px;
+  background-color:red;
+      margin-top: -18px;
+}
+  </style>
+
+  <script>
+$( ".move_left" ).click(function() {
+  $(".ougc_annbars_red").css("display","none");
+  });
+    </script>

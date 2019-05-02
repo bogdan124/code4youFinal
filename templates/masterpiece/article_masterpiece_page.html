@@ -1,0 +1,486 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>account</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+<link rel="stylesheet" href="../static/assets_profile/css/Data-Table.css">
+<link rel="stylesheet" href="../static/assets_profile/css/Data-Table2.css">
+<link rel="stylesheet" href="../static/assets_profile/css/Dynamic-Table.css">
+<link rel="stylesheet" href="../static/assets_profile/css/Features-Clean.css">
+<link rel="stylesheet" href="../static/assets_profile/css/Header-Blue.css">
+<link rel="stylesheet" href="../static/assets_profile/css/Header-Dark.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+<link rel="stylesheet" href="../static/assets_profile/css/Navigation-Clean.css">
+<link rel="stylesheet" href="../static/assets_profile/css/Profile-Card.css">
+<link rel="stylesheet" href="../static/assets_profile/css/Profile-Picture-With-Badge.css">
+<link rel="stylesheet" href="../static/assets_profile/css/Profile-Picture-With-Badge1.css">
+<link rel="stylesheet" href="../static/assets_profile/css/style_chart.css">
+<link rel="stylesheet" href="../static/assets_profile/css/style_chat.css">
+<link rel="stylesheet" href="../static/assets_profile/css/styles.css">
+<link rel="stylesheet" href="../static/assets_profile/css/to-do-list.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jodit/3.1.39/jodit.min.css">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jodit/3.1.39/jodit.min.js"></script>
+{% include  "files_after_login/header_after_login.html" %}
+
+<style>
+  .left_lateral_menu {
+      width: 119%;
+      padding-top: 24px;
+      flex-shrink: 0;
+      z-index: 1000;
+      position: relative;
+      box-shadow: 0 0 0 rgba(12,13,14,0.05);
+      transition: box-shadow ease-in-out .1s,transform ease-in-out .1s;
+      position: -webkit-sticky;
+      position: sticky;
+    /* width: auto; */
+
+    top: 76px;
+
+  }
+  iframe {
+    border: 0px;
+}
+  .center_show_content{
+    max-width: 1100px;
+    /*width: calc(100% - 164px);*/
+    background-color: #FFF;
+    border-radius: 0;
+    border: 1px solid #d6d9dc;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 1px;
+    border-right-width: 0;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+  body{
+        background-color: #fff !important;
+  }
+  .center_show_content {
+    margin-top: 1px;
+}
+.nav-links {
+
+    list-style: none;
+}
+.item_from_menu:hover{
+  background: rgba(12,13,14,0.05);
+color: #0C0D0E;
+
+    padding: 8px 6px 8px 0;
+border-right: 3px solid #F48024;
+line-height: 1.8;
+font-size: 13px;
+}
+.item_from_menu{
+  font-family:;
+}
+body>.content {
+    max-width: 1264px;
+    width: 100%;
+    display: flex;
+}
+nav.navbar.navbar-dark.navbar-expand-md.navigation-clean-search {
+    height: 50px;
+    position:fixed;
+    font-size: 15px;
+    z-index:10000000;
+    width:100%;
+}
+.center_show_content {
+    margin-top: 48px !important;
+}
+
+.center_show_content {
+    width: 100em;
+    height: 93%;
+}
+img.image_master {
+    width: 100px;
+}
+#logout{
+  display:none;
+}
+pre{
+  color:#e83e8c;
+}
+li.text_edit_code {
+    position: absolute;
+    /* margin-bottom: -18px; */
+}
+.t_TEXT_AREA {
+    width: 47em;
+    height:10em;
+}
+#submit_text_edited {
+    width: 100%;
+}
+div#content_all_show_data {
+    margin-bottom: 100px;
+}
+div#google_translate_element {
+    position: fixed;
+    top: 97%;
+}
+.this_not_show{
+  display:none;
+}
+.popup-tag{
+position:absolute;
+display:none;
+background-color:#785448d4;
+color:white;
+padding:10px;
+font-size:20px;
+font-weight:bold;
+text-decoration:underline;
+cursor:pointer;
+-webkit-filter: drop-shadow(0 1px 10px rgba(113,158,206,0.8));
+}
+.goog-te-banner-frame.skiptranslate {display: none !important;}
+body { top: 0px !important; }
+  </style>
+<div class="content">
+
+
+
+<div class="row">
+  <div class="col-lg-2">
+    <div class="title_all">ewerte</div>
+    <div class="left_lateral_menu navigation">
+
+      <ul class="nav-links">
+
+  {%for i in select_masterpiece%}<!--https://bootsnipp.com/snippets/A39zK   or   https://www.creative-tim.com/product/datepicker?partner=114912-->
+          <li class="item_from_menu" onclick="content_show('{{i[3]}}','{{i[1]}}')">{{i[2]}}</li>
+  {%endfor%}
+    <hr/>
+    <li class="item_from_menu" onclick="content_show('0','1')">Sources</li>
+    <li class="item_from_menu button_add_info" onclick="content_show(0000,0000)">Add content</li>
+
+        </ul>
+
+    </div>
+    </div>
+
+
+
+  <div class="col-lg-10">
+    <div class="center_show_content">
+      <div class="center_show_content_title"><h1><div class='title______'>Html</div></h1><hr/></div>
+
+
+<style>
+  .group_show_text_size{
+      display: -webkit-box !important;
+      display: -ms-flexbox !important;
+      display: flex !important;
+      -webkit-box-orient: vertical !important;
+      -webkit-box-direction: normal !important;
+      -ms-flex-direction: column !important;
+       flex-direction: initial !important;
+      padding-left: 0 !important;
+      margin-bottom: 0 !important;
+  }
+  .text_buttons{
+    margin-bottom:40px;
+  }
+</style>
+<div class="text_buttons">
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
+
+           <div class="list-group group_show_text_size list-group-horizontal">
+               <a href="#" class="list-group-item active" onclick="switch_articles_size(1)">Large</a>
+               <a href="#" class="list-group-item" onclick="switch_articles_size(2)">Medium</a>
+               <a href="#" class="list-group-item" onclick="switch_articles_size(3)">Small</a>
+               <a href="#" class="list-group-item" onclick="switch_articles_size(4)">Custom</a>
+           </div>
+
+       </div>
+       </div>
+<div id="content_all_show_data">
+
+</div>
+<input type="button"  class="this_not_show" value="Get selection" onmousedown="getSelText()">
+<form name=aform >
+<textarea  class="this_not_show" name="selectedtext" rows="5" cols="20"></textarea>
+</form>
+<span class="popup-tag"></span>
+
+<!--<div class="content_edit"><a href="#">Add new content</a></div>-->
+    </div>
+  </div>
+
+</div>
+  </div>
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.js">
+
+  </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<style>
+    #snackbar {
+        visibility: hidden;
+        min-width: 250px;
+        margin-left: -125px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 2px;
+        padding: 16px;
+        position: fixed;
+        z-index: 1;
+        left: 50%;
+        bottom: 30px;
+        font-size: 17px;
+    }
+
+    #snackbar.show {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+    @-webkit-keyframes fadein {
+        from {bottom: 0; opacity: 0;}
+        to {bottom: 30px; opacity: 1;}
+    }
+
+    @keyframes fadein {
+        from {bottom: 0; opacity: 0;}
+        to {bottom: 30px; opacity: 1;}
+    }
+
+    @-webkit-keyframes fadeout {
+        from {bottom: 30px; opacity: 1;}
+        to {bottom: 0; opacity: 0;}
+    }
+
+    @keyframes fadeout {
+        from {bottom: 30px; opacity: 1;}
+        to {bottom: 0; opacity: 0;}
+    }
+    #snackbar{
+      display:inherit;
+    }
+    </style>
+<div id="google_translate_element"></div>
+
+
+
+
+
+
+<div id="snackbar" class="show" style="text-align:left;"><div class="show_this_left"></div>Some text some message..</div>
+  <script>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+  }
+  var keys = {D_Key:3};
+window.onkeydown = function(e) {
+  keys[e.keyCode] = true;
+getSelText();
+}
+
+  function getSelText()
+  {
+      var txt = '';
+       if (window.getSelection)
+      {
+          txt = window.getSelection();
+               }
+      else if (document.getSelection)
+      {
+          txt = document.getSelection();
+              }
+      else if (document.selection)
+      {
+
+          txt = document.selection.createRange().text;
+              }
+      else return;
+      document.aform.selectedtext.value =  txt;
+      $.ajax({
+        url: "/evaluate_word_send?word="+document.aform.selectedtext.value,
+        cache:false,
+         success: function(result){
+
+           console.log(result)
+             $("#snackbar").addClass("show");
+             $("#snackbar").html(result[0].toUpperCase()+"<button type='button' onclick='run_function_close(1)' class='btn' name='button'>Close</button> <button type='button' onclick='run_function_close(2)' class='btn' name='button2'>More</button>");
+
+
+          }});
+
+          console.log(txt);
+//press D key to acces https://www.computerhope.com/jargon/l/linux.htm   https://stackoverflow.com/questions/5517260/how-to-have-a-popup-after-selecting-text
+
+  }
+  $("#snackbar").removeClass("show");
+function run_function_close(i){
+  if(i==1){
+    $("#snackbar").removeClass("show");
+  }
+}
+
+  </script>
+
+
+
+
+
+
+
+  <script>
+
+var article_global;
+var article_masterpiece;
+var editor;
+  function content_show(article,masterpiece){
+article_global=article;
+article_masterpiece=masterpiece;
+    if(article!='0000'){
+      $.ajax({
+        url: "/show_data_masterpiece?article="+article+"&masterpiece="+masterpiece,
+        success: function(result){
+          var add_content=result[1];
+
+
+          $(".title______").html(result[2][0][2]);
+          $("#content_all_show_data").html(add_content);
+
+        }
+      });
+    }else{
+      $("#content_all_show_data").html("<div class='btn_show_menu'><select  id='name_articles'>{%for i in select_masterpiece%}<option  value='{{i[0]}}'>{{i[2]}}</option>{%endfor%}</select><button onclick='button_var()'  class='btn' name='button'>ADD</button></div><br/><textarea id='editor'></textarea><div id='button_submit'></div>");
+      var editor = new Jodit('#editor');
+      $(".jodit_toolbar").append("<li  class='jodit_toolbar_btn jodit_toolbar_btn-source'><a title='Change mode'>  <span onclick='add_code_view()' style='vertical-align: top;border-radius: 2px;display: inline-block;width: 30px;height: 30px;padding: 10px;margin-right:10px;' context-menu='downloadThumbnail24'><svg style='width:22px;height:22px;margin-left: -7px !important;margin-top: -5px; !important' viewBox='0 0 24 24'><path fill='#6F6F6F'  d='M8,3A2,2 0 0,0 6,5V9A2,2 0 0,1 4,11H3V13H4A2,2 0 0,1 6,15V19A2,2 0 0,0 8,21H10V19H8V14A2,2 0 0,0 6,12A2,2 0 0,0 8,10V5H10V3M16,3A2,2 0 0,1 18,5V9A2,2 0 0,0 20,11H21V13H20A2,2 0 0,0 18,15V19A2,2 0 0,1 16,21H14V19H16V14A2,2 0 0,1 18,12A2,2 0 0,1 16,10V5H14V3H16Z'></path></svg></span></a><div class='jodit_toolbar_popup jodit_toolbar_popup-open' id='show_text'  style='display: block;'><input type='text' id='insert_text__'></input><br/><button class='btn' onclick='function_insert_code()'>Insert</button> or <button class='btn' onclick='redirect_to_page()'>Add Code</button></div></li>");
+//add content to see programming language
+  //$(".jodit_toolbar").append("");
+  $("#show_text").hide();
+    $("#button_submit").html("<button class='btn' id='submit_text_edited' onclick='send_data_to_server()' name='button'>Submit</button>");
+
+    }
+//console.log(article_global,article_masterpiece);
+  }
+
+  function add_code_view(){
+
+  $("#show_text").toggle();
+
+
+  }
+function function_insert_code(){
+var inser_this =  $('#insert_text__').val();
+  $(".jodit_wysiwyg").append(inser_this);
+}
+
+  function button_var(article){
+     var sel = document.getElementById('name_articles');
+     var sel2=getSelectedOption(sel);
+
+     $.ajax({
+       url: "/show_data_masterpiece?article="+sel2+"&masterpiece={{id_article}}",
+       success: function(result){
+         var add_content=result[0][0][2];
+         console.log(add_content);
+
+         $(".jodit_wysiwyg").html(add_content);
+       }
+     });
+
+  }
+
+function redirect_to_page(){
+window.location="http://localhost:5000/visualize_code";
+
+}
+
+function switch_articles_size(type){
+  var get_data=$("#content_all_show_data").html();
+
+  $.ajax({
+    url:'/sumar_create',
+    method:"POST",
+    data:{"text":get_data,"type":type},
+    success:function(result){
+    $("#content_all_show_data").html(result);
+    }
+
+  });
+
+}
+
+
+$("#submit_text_edited").click(function(){
+
+//  send_data_to_server(article_global,article_masterpiece);
+  console.log("clicked");
+});
+
+
+
+  function send_data_to_server(){
+    var sel = document.getElementById('name_articles');
+    var sel2=getSelectedOption(sel);
+      article=sel2;
+      var url = new URL(window.location.href);
+      var c = url.searchParams.get("id");
+      masterpiece=c;
+
+    var get_data=$("#editor").val();
+    var data1= {
+      id_article: article,
+      id_page:masterpiece,
+      html: get_data
+    };
+    console.log(get_data);
+    $.ajax({
+      url:'/update_data_from_masterpiece',
+      method:"POST",
+      data:data1,
+      success:function(result){
+        console.log(result);
+      }
+
+    });
+
+  }
+
+
+  function get_data_from_text_editor(){
+    var get_data=$("#editor").val();
+    return get_data;
+  }
+
+  function getSelectedOption(sel) {
+       var opt;
+       for ( var i = 0, len = sel.options.length; i < len; i++ ) {
+           opt = sel.options[i];
+           if ( opt.selected === true ) {
+               break;
+           }
+       }
+       console.log(opt.value);
+       return opt.value;
+   }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.3/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.3/theme-monokai.js">    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.3/mode-javascript.js">    </script>
+    <script>
+      //  var editor = ace.edit("editor");
+      //  editor.setTheme("ace/theme/monokai");
+      //  editor.session.setMode("ace/mode/javascript");
+    </script>

@@ -1,0 +1,358 @@
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>account</title>
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+<link rel="stylesheet" href="../static/assets_profile/css/Data-Table.css">
+<link rel="stylesheet" href="../static/assets_profile/css/Features-Clean.css">
+<link rel="stylesheet" href="../static/assets_profile/css/css_list_profile.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jodit/3.1.39/jodit.min.css">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jodit/3.1.39/jodit.min.js"></script>
+<style type="text/css">
+.list-notificacao{
+min-width: 400px;
+background: #ffffff;
+}
+
+.list-notificacao li{
+border-bottom : 1px #d8d8d8 solid;
+text-align    : justify;
+padding       : 5px 10px 5px 10px;
+cursor: pointer;
+font-size: 12px;
+}
+
+.list-notificacao li:hover{
+background: #f1eeee;
+}
+
+.list-notificacao li:hover .exclusaoNotificacao{
+display: block;
+}
+
+.list-notificacao li  p{
+color: black;
+width: 305px;
+}
+
+.list-notificacao li .exclusaoNotificacao{
+width: 25px;
+min-height: 40px;
+position: absolute;
+right: 0;
+display: none;
+}
+
+.list-notificacao .media img{
+width: 40px;
+height: 40px;
+float:left;
+margin-right: 10px;
+}
+
+.badgeAlert {
+display: inline-block;
+min-width: 10px;
+padding: 3px 7px;
+font-size: 12px;
+font-weight: 700;
+color: #fff;
+line-height: 1;
+vertical-align: baseline;
+white-space: nowrap;
+text-align: center;
+background-color: #d9534f;
+border-radius: 10px;
+position: absolute;
+margin-top: -10px;
+margin-left: -10px
+}    </style>
+  <style>
+  .img-circle {
+     border-radius: 0%;
+}
+  a#logout {
+    position: absolute !important;
+    right: -7em !important;
+    top: 0 !important;
+}
+form.form-inline.mr-auto {
+    display: none !important;
+}
+.form_posting {
+    margin-top: 28px;
+    overflow: hidden;
+}
+button#contact-submit {
+    width: 100%;
+}
+@media (min-width: 768px){
+  .container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
+      margin-right: 0;
+      margin-left: 20em !important;
+  }
+}
+
+.avatar-wrapper #change-picture, .avatar-wrapper .change-picture {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(12,13,14,0.6);
+    border: 0;
+    border-radius: 0 0 3px 3px;
+    color: #FFF;
+    text-align: center;
+    padding: 8px 0;
+    width: auto;
+    transition: background .3s ease;
+}
+#change-picture {
+    display: block;
+    height: 30px;
+  /*width: 128px;*/
+    padding-top: 10px;
+}
+.badge_gold_{
+background-color: gold;
+
+}
+.badge_silver_{
+background-color: silver;
+
+}
+li#api_dropdown {
+    display: none;
+}
+textarea#message1,textarea#message {
+    width: 100% !important;
+}
+.back_photo {
+  background-image: url(//placeimg.com/280/180/tech);
+    background-repeat: no-repeat;
+    background-size: 100%;
+  width: 100%;
+    background-color: blueviolet;
+    height: 199px;
+    padding: 0px;
+    margin-top: -15px;
+    z-index: 1;
+}
+
+.profile_pic {
+  background-image: url(//placeimg.com/280/180/tech);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 200px;
+    height: 200px;
+    background-color: orange;
+    border: double white 5px;
+    z-index: 23;
+    position: relative;
+
+}
+.price_ {
+    position: relative;
+    top: 106%;
+    text-align: center;
+    font-size: 24px;
+}
+.price_ {
+    position: relative;
+    top: 102%;
+    text-align: center;
+    font-size: 24px;
+
+    width: 194px;
+    height: 200px;
+    padding-top: 12px;
+
+}
+.profilic {
+  position:relative;
+  top: -103px;
+  left: 72em;
+    width: 200px;
+    background-color: white;
+    height: 350px;
+    box-shadow: 0 0 1px 1px rgba(20,23,28,0.1), 0 3px 1px 0 rgba(20,23,28,0.1);
+border-radius: 4px;
+}
+.add_to_cart {
+    width: 86%;
+    border: 0px solid;
+    border-radius: 0;
+}
+.price_value {
+    font-size: 31px;
+    margin-left: -85px;
+}
+button.btn.add_to_cart.share_button {
+    background-color: white;
+    margin-top: 8px;
+}
+.container_content_descriere {
+    width: 1170px;
+    position: absolute;
+    top: 286px;
+    left:10em;
+}
+.title_1 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 21px;
+}
+a.navbar-brand {
+    position: absolute;
+    left: 9em;
+}
+ul.all_content_read {
+    list-style-type: none;
+}
+a.name_lenght {
+    font-size: 18px;
+    font-weight: bolder;
+}
+li.content_read {
+    margin-bottom: 18px;
+}
+a.name_lenght {
+    margin-left: 6px;
+}
+li.dropdown {
+    display: none;
+}
+div#articles {
+    margin-left: -21px;
+}
+.btn_toolbar_2{
+  margin-top:41px !important;
+  margin-bottom: -12px !important;
+}
+a#logout {
+    display: none;
+}
+.ougc_annbars_red {
+    display: none;
+}
+</style>
+
+{% include  "files_after_login/header_after_login.html" %}
+
+
+<body>
+  <div class="top_page_info">
+<div class="back_photo">
+
+</div>
+
+</div>
+<div class="profilic">
+<div class="profile_pic">
+
+  <div class="price_">
+
+    <!--<div class="btn-toolbar btn_toolbar_2">
+<div class="btn-group">
+    <a href="#" class="btn btn-inverse disabled"><i class="glyphicon glyphicon-thumbs-up"></i></a>
+    <a href="#" class="btn btn-inverse disabled"><i class="glyphicon glyphicon-heart"></i></a>
+    <a href="#" class="btn btn-inverse disabled"><i class="glyphicon glyphicon-share-alt"></i></a>
+</div>
+</div>-->
+
+    <div class="price_value">Free</div>
+    <div class="offerts">
+      </div>
+     <button type="button" class="btn btn-danger add_to_cart">Add to cart</button><br/>
+      <button type="button" class="btn add_to_cart share_button">Share</button>
+
+    </div>
+
+  </div>
+
+  </div>
+
+  <div class="container container_content_descriere">
+
+    <div class="row">
+
+        <div class="col-lg-9" >
+          <div class="description title_1">
+           Description
+          </div>
+          <div id="descriere">
+            ;isdhfisipfhisdfhds o;;sofo sdo;fhsd;o hhdshohf ohsh foohsdh; ho;sdhdo fhosdhfhods oho  ;isdhfisipfhisdfhds o;;sofo sdo;fhsd;o hhdshohf ohsh foohsdh; ho;sdhdo fhosdhfhods oho  ;isdhfisipfhisdfhds o;;sofo sdo;fhsd;o hhdshohf ohsh foohsdh; ho;sdhdo fhosdhfhods oho
+            </div>
+            <div class="requirements title_1">
+              Requirements
+              </div>
+            <div id="requirements_write">
+
+              </div>
+              <div class="requirements title_1">
+                Articles
+                </div>
+            <div id="articles">
+                  <ul class="all_content_read">
+
+
+                 </ul>
+              </div>
+          </div>
+      </div>
+    </div>
+
+</body>
+<script>
+
+  var url_string = window.location.href;
+  var url = new URL(url_string);
+  var c = url.searchParams.get("id");
+  console.log(c)
+  $.ajax({
+
+    url: "/select_from_community_2?id="+c,
+     success: function(result){
+
+        $("#descriere").html(result[0][4]);
+        $("#requirements_write").html(result[0][10]);
+
+
+
+
+  }});
+
+  $.ajax({
+
+    url: "/select_from_community__tutorials?id_send="+c,
+     success: function(result){
+        for(i=0;i<=result.length-1;i++){
+          $(".all_content_read").append("<li class='content_read'><img src='"+result[i][4]+"' width='45px' height='45px'  class='page1_phto'/><a class='name_lenght' href='"+result[i][5]+"'>"+result[i][2]+"</a><div class='this_classs_text_div'>"+result[i][3]+"</div><hr/></li>");
+
+
+        }
+
+
+  }});
+
+
+
+</script>

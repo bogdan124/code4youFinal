@@ -1,0 +1,198 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<style>
+.review{
+  margin-left:1px;
+}
+.review.ui.styled.accordion {
+    width: 99%;
+}
+.tags a {
+    border: 1px solid #DDD;
+    display: inline-block;
+    color: #717171;
+    background: #FFF;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(180,180,180,0.1);
+    box-shadow: 0 1px 1px 0 rgba(180,180,180,0.1);
+    -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    -o-transition: all .1s ease-in-out;
+    -ms-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+    border-radius: 2px;
+    margin: 0 3px 6px 0;
+    padding: 5px 10px;
+}
+</style>
+<div class="review ui styled accordion">
+  <div class="title">
+    <i class="dropdown icon"></i>
+    What is your favourite text color?
+  </div>
+  <div class="content">
+    <input type="color"  id="get_color_1" placeholder="color">
+
+  </div>
+  <div class="title">
+    <i class="dropdown icon"></i>
+    What is your favourite background text color?
+  </div>
+  <div class="content">
+      <input type="color" id="get_color_2" placeholder="color">
+      </div>
+      <div class="title">
+        <i class="dropdown icon"></i>
+        Your level of knowledge?
+      </div>
+      <div class="content" id="radio_level">
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input type="radio" id="nube"  name="fruit" value="nube" checked="" tabindex="0" class="hidden">
+            <label>Nube(I don't have any knowledge)</label>
+          </div>
+        </div>
+        <div class="field">
+             <div class="ui radio checkbox">
+               <input type="radio" id="beginner" name="fruit" value="beginner" checked="" tabindex="0" class="hidden">
+               <label>Beginner(I have some idea about what is a variable and logics)</label>
+             </div>
+           </div>
+           <div class="field">
+             <div class="ui radio checkbox">
+               <div class="ui radio checkbox">
+                 <input type="radio" id="medium" name="fruit" value="medium"  checked="" tabindex="0" class="hidden">
+                 <label>Medium(I worked with some programming languages before)</label>
+               </div>
+             </div>
+           </div>
+           <div class="field">
+             <div class="ui radio checkbox">
+               <input type="radio" id="expert" name="fruit"  value="expert" tabindex="0" class="hidden">
+               <label>Expert(I know 1 or more programming languages but I want to learn more)</label>
+             </div>
+           </div>
+      </div>
+  <div class="title active">
+    <i class="dropdown icon"></i>
+    Do you like to have text aligment ?
+  </div>
+  <div class="content active">
+    <div class="ui form" id="text_align">
+      <div class="field">
+           <div class="ui radio checkbox">
+             <input type="radio" id="left" name="fruit1" checked="" value="1" tabindex="1" class="hidden">
+             <label>Left</label>
+           </div>
+         </div>
+         <div class="field">
+           <div class="ui radio checkbox">
+             <input type="radio" id="center" name="fruit1" value="2" tabindex="1" class="hidden">
+             <label>Center</label>
+           </div>
+         </div>
+         <div class="field">
+           <div class="ui radio checkbox">
+             <input type="radio" id="right" name="fruit1" value="3" tabindex="1" class="hidden">
+             <label>Right</label>
+           </div>
+         </div>
+
+
+</div>
+  </div>
+
+  <div class="title">
+    <i class="dropdown icon"></i>
+    Select some tags that are representing you.
+  </div>
+  <div class="content"><!--#E1ECF4-->
+    <div class="tags"></div>
+    <div class="tags">
+                  {% for n in sql1 %}
+
+                    <a class="tag__{{n[0]}}"  onclick="color_button('.tag__{{n[0]}}',{{n[0]}})" href="#">{{n[1]}}</a>
+                  {% endfor %}
+                </div>
+  </div>
+  <div class="title">
+    <i class="dropdown icon"></i>
+    Confirm
+  </div>
+  <div class="content">
+    <button style="width:100%" id="send_button" class="ui primary button">Save</button>
+    </div>
+</div>
+
+
+
+
+<script>
+
+  var gs=[];
+$("#send_button").click(function(){
+  var rates = $('#rates').val();
+var data1;
+var data2;
+if (document.getElementById('nube').checked) {
+  data1 = $('#nube').val();
+}else if(document.getElementById('beginner').checked){
+  data1=$('#beginner').val();
+}else if(document.getElementById('medium').checked){
+  data1=$('#medium').val();
+}else if(document.getElementById('expert').checked){
+  data1=$('#expert').val();
+}
+
+if (document.getElementById('left').checked) {
+  data2 = $('#left').val();
+}else if(document.getElementById('center').checked){
+  data2=$('#center').val();
+}else if(document.getElementById('right').checked){
+  data2=$('#right').val();
+}
+console.log(data1,data2);
+console.log(gs);
+  $.ajax({
+  		url : "/review_popup",
+  		method: "POST",
+      contentType: "application/json;charset=utf-8",
+  		data :JSON.stringify({
+        "color1":$('#get_color_1').val(),
+        "color2":$('#get_color_2').val(),
+        "knowledge":data1,
+        "aligment":data2,
+        "gs":gs
+
+      }),
+  	 success: function(result){
+  		console.log(result);
+    }
+
+  });
+
+});
+
+
+
+
+function color_button(parameter,number){
+  $(parameter).css("background-color","#E1ECF4");
+  var get1=$(parameter).html();
+
+      gs.push([get1,number]);
+
+
+    console.log(gs[0][0]);
+
+
+}
+
+  $(document).ready(function(){
+                $('.ui.accordion').accordion();
+             });
+             $('.ui.radio.checkbox')
+  .checkbox()
+;
+
+  </script>

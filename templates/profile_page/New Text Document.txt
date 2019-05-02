@@ -1,0 +1,194 @@
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<!DOCTYPE html><html lang='en' class=''>
+<head><script src='http://production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" /><link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/rlo206/pen/ClEti?limit=all&page=30&q=editor" />
+
+<link rel='stylesheet prefetch' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'><link rel='stylesheet prefetch' href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'><link rel='stylesheet prefetch' href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css'>
+<style class="cp-pen-styles">body {
+  background: #CCCCCC;
+}
+
+.editor-controls {
+  position: relative;
+  width: 50%;
+  height: 0;
+  background: white;
+  border-top: 2px solid #336699;
+  border-left: 2px solid #336699;
+  -webkit-transition: .25s ease-in-out;
+}
+
+.editor-controls.open {
+  height: 10%;
+}
+
+.editor-controls-toggle {
+  position: absolute;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  bottom: -14px;
+  right: 0px;
+  border-radius: 90px;
+  background: #336699;
+  color: white;
+  z-index: 2;
+}
+
+.editor-controls-toggle i {
+  padding-left: 3px;
+}
+
+.bottom-controls {
+  
+}
+
+.editor-container {
+  position: relative;
+  height: 650px;
+  margin: 20px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background: #E8ECEF;
+  padding-top: 45px;
+}
+
+.news-item-container {
+  position: relative;
+  height: 620px;
+}
+
+.headers {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.headers .header {
+  width: 50%;
+  background: #336699;
+  padding: 15px;
+}
+
+.editor-section-wrapper {
+  height: 100%;
+}
+
+.editor-section {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 95%;
+  border: 2px solid #336699;
+}
+
+#editor {
+  left: 0;
+  border-right: 1px solid #336699;
+  height: 94.6%;
+  -webkit-transition: .25s ease-in-out;
+}
+
+#editor.controls-open {
+  height: 85%;
+}
+
+#preview {
+  right: 0;
+  background: #FFFFFF;
+  border-left: 1px solid #336699;
+}
+
+/* helpers */
+
+.bolded {
+  font-weight: bold;
+}
+
+.underlined {
+  text-decoration: underline;
+}
+
+.italic {
+  font-style: italic;
+}</style></head><body>
+<div class="headers clearfix">
+  <div class="header pull-left">Html Editor</div>
+  <div class="header pull-right">Preview</div>
+</div>
+
+<div class="news-item-container">
+  <div class="editor-section-wrapper">
+    <div class="editor-controls">
+      <div class="editor-controls-toggle">
+        <i class="fa fa-chevron-down"></i>
+      </div>
+      <div class="btn-group control-buttons">
+        <div class="btn btn-default bolded" data-action="bold">B</div>
+        <div class="btn btn-default underlined" data-action="underline">U</div>
+        <div class="btn btn-default italic" data-action="italic">I</div>
+      </div>
+    </div>
+    <div id="editor" class="editor-section"></div>
+  </div>
+  <iframe id="preview" class="editor-section"></iframe>
+</div>
+<div class="bottom-controls"></div>
+<script src='http://production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script src='//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js'></script>
+<script >(function (){
+  var $editorContainer = $('.news-item-container'),
+      $editor = $('#editor'),
+      $preview = $('#preview'),
+      $editorControls = $('.editor-controls'),
+      $editorControlsToggle = $('.editor-controls-toggle'),
+      $editorControlButtons = $('.control-buttons'),
+      aceEditor,
+      resizable = true,
+      testMarkup = '<h1>News Item Title</h2>\n<section>\nPop-up artisan reprehenderit single-origin coffee. Wolf voluptate pickled, lomo Bushwick non labore. Neutra selvage readymade tote bag, irure consectetur gluten-free aliquip fugiat pop-up. Vice eu vero anim, cray McSweeneys you probably havent heard of them pickled. Est small batch bespoke drinking vinegar. Direct trade delectus mustache, elit viral ennui master cleanse literally nostrud pickled street art swag small batch dolore mlkshk. Try-hard disrupt sapiente tattooed master cleanse.\n</section>\n<br />\n<section>\nAdipisicing anim PBR&B, mixtape American Apparel voluptate VHS kale chips jean shorts. Leggings qui magna shabby chic, swag laborum 3 wolf moon semiotics ethical brunch ad Neutra. Kale chips freegan letterpress dolor ea. Marfa single-origin coffee blog cillum Intelligentsia. Ex High Life ea, hashtag dolor ethnic fingerstache Portland +1 gastropub cred quis Blue Bottle Tumblr. Ethnic VHS et food truck consequat, PBR&B Tonx brunch cred freegan fap. Typewriter Helvetica church-key, small batch id pop-up hashtag readymade actually cliche kogi sapiente synth ethical.\n</section>';
+  
+  
+  function setupEditor () {
+    aceEditor = ace.edit("editor");
+    aceEditor.setShowPrintMargin(false);
+    aceEditor.getSession().setUseWorker(false);
+    aceEditor.getSession().setMode("ace/mode/html");
+    aceEditor.getSession().on('change', updatePreview);
+    aceEditor.setValue(testMarkup);
+  }
+  
+  function setupEvents () {
+    $editorControlsToggle.on('click', toggleEditorControls);
+    $editorControlButtons.find('.btn').on('click', controlButtonClicked);
+  }
+  
+  function toggleEditorControls (evt) {
+    //$(this).find('i').toggleClass('fa-chevron-down');
+    //$(this).find('i').toggleClass('fa-chevron-up');
+    $editorControls.toggleClass('open');
+    $editor.toggleClass('controls-open');
+  }
+  
+  function controlButtonClicked (evt) {
+    var action = $(this).data('action');
+    console.log("action: ", action);
+  }
+  
+  function updatePreview () {
+    var editorContent = aceEditor.getSession().getValue();
+    $preview.contents().find('body').html(editorContent);
+  }
+
+  setupEditor();
+  setupEvents();
+
+
+
+  $(window).trigger('resize');
+}());
+//# sourceURL=pen.js
+</script>
+</body></html>
