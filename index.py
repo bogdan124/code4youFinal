@@ -12,6 +12,7 @@ from bs4 import BeautifulSoup
 from knn_recomand import classifier
 from modify_html_content import get_modify,tokenization,dictionary_word
 from dockfile import print_code_results
+from pdf_class import pdf_class
 
 
 app=Flask(__name__)
@@ -657,6 +658,13 @@ def code_analise():
 @app.route('/index_compile',methods=['POST','GET'])
 def index_compile():
 	return render_template("compile/python/compile.html")
+
+@app.route('/pdf_files',methods=['GET','POSt'])
+def pdf_files():
+	id_article=request.args['id']
+	show_=pdf_class(id_article)	
+	return jsonify(show_.prelucrateData())
+
 
 
 if __name__=='__main__':
