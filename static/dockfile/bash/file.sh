@@ -1,3 +1,1 @@
-#!/bin/bash
-
-echo "welcome to jdoodle"
+echo "hello"

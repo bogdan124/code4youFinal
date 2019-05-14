@@ -1,3 +1,2 @@
-import math 
-va11=Input("show input")
-print(vall)
+import math
+print("hello world")
