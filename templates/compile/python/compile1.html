@@ -53,8 +53,7 @@ h2 {
 
 }
 .CodeMirror {
-height:100% !important;
-float:left;
+height:55.8em  !important;
 width:50%;
 }
 
@@ -62,15 +61,13 @@ body {
   margin: 0px;
 }
 .edoutqqput {
-    width:50%;
+    width:30%;
     background: #ccc;
     color: #black;
-    height: 100%;
+    height: 34em;
     overflow: auto;
     font-family: "Consolas","Lucida Console","Monaco",monospace;
-    float:right;
-position:relative;
-top:1px;
+float:right;
 
 
 }
@@ -84,7 +81,9 @@ top:1px;
 .menu{
 z-index:100000000;
 }
-
+.cm-s-3024-night.CodeMirror,.edoutqqput {
+    margin-left: 72px;
+}
 
 .up_header{
 background-color: #fafafb !important;
@@ -98,24 +97,17 @@ width:100%;
 display:inline;
 float:left;
 }
-.btn_go_run{
-border-radius:0px !important;
-}
-.user_photo{
-float:right;
-margin-right:123px;
-}
-.gith_run_right{
-float:right;
-
-}
 </style>
 <body>
 <section class="up_header">
-<button type="button" class="btn_go_run btn btn-success" onclick='runit()'>Run</button>
-<button type="button" class="btn_go_run btn btn-success" data-toggle="modal" data-target="#exampleModal">Github</button>
-<button type="button" class="btn_go_run btn btn-success" onclick=''>Github</button>
-<img class="user_photo" width="30px" height="30px" src="https://image.flaticon.com/icons/png/128/149/149071.png">
+<ul class="ul_top">
+<li  onclick='runit()' ></li>
+  <li title="search"><a href="#" class="search">search</a></li>
+  <li title="pencil"><a href="#" class="pencil">pencil</a></li>
+  <li title="about"><a href="#" class="active about">about</a></li>
+  <li title="archive"><a href="#" class="archive">archive</a></li>
+  <li title="contact"><a href="#" class="contact">contact</a></li>
+</ul>
 </section>
 
  
@@ -124,104 +116,19 @@ float:right;
 
 
 				<section class="codeContainer" id="htmlContainer">
-					
+					<!--<div class="go_top"><h3>HTML</h3></div><br/><br/>-->
 					  {%for i in fetch%}
 					<textarea class="codemirror-textarea" id="yourcode">{{i[1]}}</textarea>
 					  {%endfor%}
 				</section>
 
 				<section class="codeContainer code_conta" id="resultContainer">
-					
+					<!--	<div class="go_top"><h3>Text result</h3></div>-->
 					<pre id="output" class="edoutqqput"></pre>
 					  <div id="mycanvas" class="edoutqqput1"></div>
-					
+					<!--  <iframe id='iframe1'></iframe>-->
 				</section>
 			</section>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-    	
-	<div class="container">
-	<div class="row">
-		<div class="form-card">
-            <div class='form-group'>
-              <div class='col-xs-12 form-group'>
-                <label class="control-label locked" for="name-input-field">Github name</label>
-                <input id="github_name" onkeyup="search_your_github_account()" name="name" class="form-control" type="text" required=""/>
-		<div class="show_github_accounts">
-					
-		</div>
-              </div>
-            </div>
-
-bogdan124
-
-<script>
-function search_your_github_account(){
-
-var github_name=$("#github_name").val();
- $.ajax({
-	url: "https://api.github.com/users/"+github_name, 
-	method: "GET",
-        contentType: "application/vnd.github.v3+json",
-	success: function(result){
-	console.log(result);
-    	  $(".show_github_accounts").html("<div class='user_git'><img src='"+result.avatar_url+"' width='30px' height='30px'/>"+result.name+"<button type='button' class='btn_go_run gith_run_right btn btn-success' onclick="+select_the_github_repo(result.name)+">Select</button></div>");
-   	}
-  });    
-}	
-
-function select_the_github_repo(gith_name){
-console.log(gith_name);
-//$("#show_github_accounts").html("");
-}
-</script>
-<!--
-            <div class='form-group'>
-              <div class='col-xs-12 form-group'>
-                <label class="control-label locked" for="phone-input-field">Phone Number</label>
-                <input id="phone_number" name="phone_number" type="text" placeholder="08xxxxxxxxxx" class="form-control locked" required="">
-              </div>
-            </div>
-            <div class="form-group locked">
-                <div class='col-xs-12 form-group'>
-                    <label class="control-label locked" for="email-input-field">Email</label>
-                    <input id="email" name="email" type="text" placeholder="email@email.com" class="form-control locked" required="">
-                </div>
-            </div>
-            <div class="form-group locked">
-                <div class='col-xs-12 form-group'>
-                    <label class="control-label locked" for="desc-input-field">Description</label>
-                    <textarea name="desc" id="desc" cols="0" rows="3" class="form-control locked"></textarea>
-                </div>
-            </div>
-            <div class="form-group locked">
-                <div class='col-xs-12 form-group'>
-                    <label class="control-label locked" for="desc-input-field">Address</label>
-                    <textarea name="address" id="address" cols="0" rows="3" class="form-control locked"></textarea>
-                </div>
-            </div>-->
-        </div>
-	</div>
-</div>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 		</body>
 <script>
 
@@ -324,4 +231,6 @@ function runit() {
 }
 
 
+ $( ".CodeMirror" ).resizable();
+$(".edoutqqput").resizable();
 </script>

@@ -163,6 +163,8 @@ body { top: 0px !important; }
     <hr/>
     <li class="item_from_menu" onclick="content_show('0','1')">Sources</li>
     <li class="item_from_menu button_add_info" onclick="content_show(0000,0000)">Add content</li>
+    <li class="item_from_menu button_add_settings" onclick="content_show_questions()">Questions</li>
+    <li class="item_from_menu button_add_settings" onclick="content_show_settings()">Settings</li>
 
         </ul>
 
@@ -222,7 +224,7 @@ body { top: 0px !important; }
 
 
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.js">
 
@@ -283,7 +285,90 @@ body { top: 0px !important; }
 
 
 <div id="snackbar" class="show" style="text-align:left;"><div class="show_this_left"></div>Some text some message..</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
   <script>
+
+	function content_show_settings()
+	{	
+		var hmtl_string=`
+			<h1><b>Settings</b></h1>
+			<hr/>
+			Download pdf: <div class="replace_butt___"><button class="btn btn-primary btn-sm" onclick="pdf_work_with_data()"> Download</button></div>
+			
+		`; 
+	 // <button class="btn btn-primary btn-lg"><i class="fa fa-circle-o-notch fa-spin"></i> Download</button>
+		$(".title______").html("");
+		$(".center_show_content_title").html("");
+		$(".text_buttons").html("");
+		$("#content_all_show_data").html(hmtl_string);
+
+	
+
+	}
+
+
+
+	
+	function pdf_work_with_data(){
+		//
+		setTimeout(function(){ 
+		$(".replace_butt___").html("<button class='btn btn-primary btn-sm'><i class='fa fa-circle-o-notch fa-spin'></i> Download</button>");
+
+		 }, 1000);
+		$(".replace_butt___").html("<button onclick='pdf_work_with_data()' class='btn btn-primary btn-sm'>Download</button>");
+		demoFromHTML();
+	}
+	
+	function demoFromHTML() {
+       
+
+	var searchParams = new URLSearchParams(window.location.search)
+	var param = searchParams.get('id')
+	console.log(param)
+	
+    
+        source = `<p>hello world!</p>`;
+ 	$.ajax({
+		url: "/pdf_files?id="+param, 
+		success: function(result){
+		 var pdf = new jsPDF('p', 'pt', 'letter');
+	   	 source=result;
+		 specialElementHandlers = {
+            
+            '#bypassme': function (element, renderer) {
+             
+                return true
+            }
+        };
+        margins = {
+            top: 80,
+            bottom: 60,
+            left: 40,
+            width: 522
+        };
+
+        pdf.fromHTML(
+        source, 
+        margins.left, 
+        margins.top, { 
+            'width': margins.width, 
+            'elementHandlers': specialElementHandlers
+        },
+
+        function (dispose) {
+      
+            pdf.save('Test.pdf');
+        }, margins);
+	  }
+	});
+       
+    }
+
+
+
+
+
+
   function googleTranslateElementInit() {
     new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
   }
@@ -334,6 +419,10 @@ function run_function_close(i){
   }
 }
 
+function content_show_questions(){
+
+
+}
   </script>
 
 
