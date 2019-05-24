@@ -13,6 +13,7 @@ from knn_recomand import classifier
 from modify_html_content import get_modify,tokenization,dictionary_word
 from dockfile import print_code_results
 from pdf_class import pdf_class
+from question_ans import QandA
 
 
 app=Flask(__name__)
@@ -563,16 +564,24 @@ def visualize_code():
     ##    print(Result)
         return render_template("codemirror/codemirror.html",code_fet=code_fet)
     else:
-        sql="SELECT * FROM code_view "
-	con=connection.cursor()
-        con.execute(sql)
-	con.close()
-        sql1=con.fetchall()
-        sql2="SELECT * FROM user_data "
-	con=connection.cursor()
-        con.execute(sql2)
-	con.close()
-        sql2=con.fetchall()
+	connection=pymysql.connect(host='localhost',use_unicode=True,charset="utf8",user='root',password='',db='code4you',autocommit=True)
+	try:
+	    with connection.cursor() as con:
+		sql="SELECT * FROM code_view "
+		con.execute(sql)
+		sql1=con.fetchall()
+	    connection.commit()
+	finally:
+            connection.close() 
+	connection=pymysql.connect(host='localhost',use_unicode=True,charset="utf8",user='root',password='',db='code4you',autocommit=True)
+	try:
+	    with connection.cursor() as con:
+		sql2="SELECT * FROM user_data "	
+		con.execute(sql2)
+		sql2=con.fetchall()
+	    connection.commit()
+	finally:
+            connection.close() 
         return render_template("not_working_page/not_working.html",sql1=sql1,sql2=sql2)
 
 
@@ -611,14 +620,54 @@ def articles():
 
 @app.route("/compile_python",methods=['POST','GET'])
 def compile_python():
-    code_id=request.args['code_id']
-    language=request.args['language']
-    sql="SELECT * FROM code_view WHERE id="+code_id+" AND language='"+language+"'"
-    con=connection.cursor()
-    con.execute(sql)
-    con.close()
-    fetch=con.fetchall()
-    return render_template("compile/python/compile.html",fetch=fetch)
+    if 'default' in request.args:
+	default=request.args.get("default")
+    else:
+	default=1
+    
+    if 'id_problem' in request.args:
+    	id_problem=request.args.get("id_problem")
+    else:
+	id_problem=-1
+    print(default,id_problem)
+    if int(default) == 1 and int(id_problem)==-1:
+	    code_id=request.args.get('code_id')
+	    language=request.args.get('language')
+	    if code_id!=None and language!=None:
+		    connection=pymysql.connect(host='localhost',use_unicode=True,charset="utf8",user='root',password='',db='code4you',autocommit=True)
+		    try:
+			with connection.cursor() as con:
+		    	    sql="SELECT * FROM code_view WHERE id="+code_id+" AND language='"+language+"'"			    
+			    con.execute(sql)
+			    con.close()
+			    fetch=con.fetchall()
+			connection.commit()
+		    finally:
+			connection.close() 
+	    return render_template("compile/python/compile.html",fetch=fetch,default=int(default))
+
+    if int(default)==0:
+	if  int(id_problem)!=-1:
+	    connection=pymysql.connect(host='localhost',use_unicode=True,charset="utf8",user='root',password='',db='code4you',autocommit=True)
+	    try:
+		with connection.cursor() as con:
+			    sql="SELECT * FROM problems WHERE id='"+str(id_problem)+"'"
+			    con.execute(sql)
+			    fetc1=con.fetchall()
+		connection.commit()
+	    finally:
+		connection.close() 
+
+	    return render_template("compile/python/compile.html",default=int(default),id_problem=int(request.args["id_problem"]),fetc1=fetc1)
+	elif int(id_problem)==-1:
+	    return render_template("compile/python/compile.html",default=int(default),id_problem=int(request.args["id_problem"]))
+    else:
+	return "it was a parameter error"
+	    
+@app.route('/solve_problem',methods=['POST','GET'])
+def solve_problem():
+	id_problem=request.args['id_problem']
+	return redirect(url_for('compile_python',id_problem=id_problem,default=0))
 
 @app.route('/integration',methods=['POST','GET'])
 def integration():
@@ -640,7 +689,7 @@ def code_analise():
 	    languages___=[
 			["Python","/home/bogdan/Desktop/Code4YOU1-master/static/dockfile/python/",".py"],
 			["Ruby","/home/bogdan/Desktop/Code4YOU1-master/static/dockfile/ruby/",".rb"],
-			["Cpp","/home/bogdan/Desktop/Code4YOU1-master/static/dockfile/cpp/",""],
+			["Cpp","/home/bogdan/Desktop/Code4YOU1-master/static/dockfile/cpp/",".cpp"],
 			["Bash","/home/bogdan/Desktop/Code4YOU1-master/static/dockfile/bash/",".sh"]
 		      ]
 	    
@@ -659,11 +708,72 @@ def code_analise():
 def index_compile():
 	return render_template("compile/python/compile.html")
 
-@app.route('/pdf_files',methods=['GET','POSt'])
+@app.route('/pdf_files',methods=['GET','POST'])
 def pdf_files():
 	id_article=request.args['id']
 	show_=pdf_class(id_article)	
 	return jsonify(show_.prelucrateData())
+
+
+@app.route('/eval_problems',methods=['GET','POST'])
+def eval_problems():
+	id_article=request.args['id']
+	if int(id_article)==1:
+	    if request.method=="POST":
+		    code_to_put_file=request.get_json()
+		   ## code_to_put_file=code_to_put_file['data']
+		    print(code_to_put_file)
+	            connection=pymysql.connect(host='localhost',use_unicode=True,charset="utf8",user='root',password='',db='code4you',autocommit=True)
+		    try:
+		        with connection.cursor() as con:
+				sql="INSERT INTO problems VALUES('','"+str(session['id'])+"','"+str(code_to_put_file['text_problem'])+"','"+str(code_to_put_file['problem_output'])+"','"+str(code_to_put_file['problem_code'])+"','"+str(code_to_put_file['problem_language'])+"','')"   
+				con.execute(sql)				
+			connection.commit()
+		    finally:
+		        connection.close() 
+		
+	return "Succes"
+
+
+@app.route('/show_data_problems',methods=['POST','GET'])
+def show_data_problems():
+	show=request.args['id']
+	connection=pymysql.connect(host='localhost',use_unicode=True,charset="utf8",user='root',password='',db='code4you',autocommit=True)
+	try:
+	    with connection.cursor() as con:
+			sql="SELECT * FROM problems,user_data WHERE language=(SELECT title FROM masterpiece WHERE id='"+str(show)+"') and user_id=user_data.id "  
+			con.execute(sql)
+			data=con.fetchall()				
+	    connection.commit()
+	finally:
+		connection.close() 		
+	return jsonify(data)
+
+@app.route('/get_question',methods=['POST','GET'])
+def get_question():
+	article=request.args['article']
+	masterpiece=request.args['masterpiece']
+	print(masterpiece,article)
+	connection=pymysql.connect(host='localhost',use_unicode=True,charset="utf8",user='root',password='',db='code4you',autocommit=True)
+	try:
+	    with connection.cursor() as con:
+		sql="SELECT data FROM article_masterpiece_page WHERE menu_id='"+str(article)+"' AND id_masterpiece='"+str(masterpiece)+"'"
+		con.execute(sql)
+		data=con.fetchall()
+	    connection.commit()
+	finally:
+		connection.close() 	
+	
+	for i in data:
+	  ##  soup = BeautifulSoup(i,"html.parser")
+          ##  store=soup.text
+	   text1 = i[0]
+	
+	soup = BeautifulSoup(text1,"html.parser")
+        store=soup.text
+	result1= QandA()
+	result = result1.ie_preprocess(store)
+	return jsonify(result1.take_result_q_and_a(result))
 
 
 
