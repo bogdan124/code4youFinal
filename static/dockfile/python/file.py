@@ -1,2 +1,1 @@
-import math
-print("hello world")
+ritnddbfusk

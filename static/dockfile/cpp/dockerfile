@@ -1,5 +1,5 @@
-FROM gpp
-COPY file /file
-WORKDIR /file/
-RUN g++ -o file file.cpp
+FROM gcc:4.9
+COPY . /file1
+WORKDIR /file1
+RUN g++ --o file file.cpp
 CMD ["./file"]
