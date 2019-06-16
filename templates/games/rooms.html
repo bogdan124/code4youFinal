@@ -1,0 +1,81 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>account</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+
+<style>
+.no-records-found {
+    display: none !important;
+}
+</style>
+
+
+				<table   data-toggle="table"
+  data-sortable="true" id="table_problems"  data-resizable="true" data-show-fullscreen="true"  data-search="true" data-show-pagination-switch="true" data-pagination="true" data-height="670">
+					<thead>
+					    <tr>
+						<th data-field="id" data-sortable="true">Room</th>
+						<th data-field="user" data-sortable="true">Users</th>	
+								
+						<th data-field="price" >Join</th>
+						
+					    </tr>
+					</thead>
+					<tbody>
+					</tbody>
+	
+			    </table>
+	
+
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>	
+<script>
+			
+ var url = new URL(window.location.href);
+	      var c = url.searchParams.get("id_game");
+	     var problems=c;
+  $.ajax({
+	 url: "/rooms_get?id_game="+problems,
+	success: function(result){
+		for(var i in result){
+				$('#table_problems tbody').append(`
+				<tr>
+				<td>`+result[i][0]+`</td>
+				<td>`+result[i][1]+`</td>
+				<td><a href='/room_add_player?default=0&game=`+result[i][7]+`&id_problem=`+result[i][10]+`&code_game=`+result[i][0]+`'><center><button class='btn btn-danger'>Solve</button></center></a></td>
+				</tr>`);
+			}
+			
+	}
+});
+
+
+  $.ajax({
+	 url: "/rooms_valid?id_game="+problems,
+	success: function(result){
+		for(var i in result){
+				$('#table_problems tbody').append(`
+				<tr>
+				<td>`+result[i][0]+`</td>
+				<td>`+result[i][1]+`</td>
+				<td><a href='/room_add_player?default=0&game=`+result[i][7]+`&id_problem=`+result[i][10]+`&code_game=`+result[i][0]+`'><center><button class='btn btn-danger'>Solve</button></center></a></td>
+				</tr>`);
+			}
+			
+	}
+});
+			$(function () {
+			  //  $('#table_problems').bootstrapTable({
+				
+				//data:JSON.stringify(result)
+			  // });
+			    $('#table_problems').bootstrapTable();
+			});
+
+</script>
+
+

@@ -1,0 +1,169 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<!------ Include the above in your HEAD tag ---------->
+<style>
+.sect-services {
+  background-color: #efefef; }
+  .sect-services .col-md-3 {
+    padding: 0; }
+
+.services-item {
+  position: relative;
+  padding-bottom: 32px;
+  border: 5px #2f1a55 solid;
+  -webkit-transition: -webkit-transform .5s ease;
+  transition: -webkit-transform .5s ease;
+  transition: transform .5s ease;
+  transition: transform .5s ease, -webkit-transform .5s ease;
+  text-align: center;
+  background-color: #FFF; }
+  .services-item a.services-item-image {
+    display: block; }
+  .services-item:hover {
+    -webkit-box-shadow: rgba(0, 0, 0, 0.35) 0 0 32px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0 0 32px;
+    z-index: 4;
+    -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+            transform: scale(1.05);
+    border-color: #ffcc00; }
+    .services-item:hover a.services-item-image {
+      display: block; }
+      .services-item:hover a.services-item-image .fa {
+        opacity: 4; }
+      .services-item:hover a.services-item-image::before {
+        opacity: .7; }
+    .services-item:hover .services-item-stars {
+      color: #ffcc00; }
+      .services-item:hover .services-item-stars .fa {
+        margin: 0 5px; }
+  .services-item h4 {
+    font-size: 1.25em;
+    margin-bottom: 10px; }
+  .services-item-image {
+    min-height: 190px;
+    background-size: cover;
+    position: relative; }
+    .services-item-image .fa {
+      font-size: 30px;
+      color: #fff;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -10px;
+      margin-top: -10px;
+      opacity: 0;
+      -webkit-transition: all .5s ease;
+      transition: all .5s ease; }
+    .services-item-image::before {
+      position: absolute;
+      content: ' ';
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: #22133e;
+      opacity: 0;
+      -webkit-transition: all .5s ease;
+      transition: all .5s ease; }
+  .services-item-stars {
+    font-size: 0.6875em;
+    color: #b4b4b4; }
+    .services-item-stars .fa {
+      margin-left: 1px;
+      -webkit-transition: all .5s ease;
+      transition: all .5s ease; }
+  .services-item-price {
+    margin-top: 5px;
+    margin-bottom: 26px;
+    font-size: 1.0625em;
+    font-family: "RobotoBold", sans-serif; }
+    .services-item-price span {
+      font-size: 1.75em; }
+    .services-item-price .fa {
+      color: #ffcc00;
+      font-size: 1.125em; }
+#sect-services {
+    margin-top: 60px;
+}
+</style>
+<section class="sect-services" id="sect-services">
+		<div class="container">
+			<div class="row">
+				
+				<div class="col-md-3 col-sm-6">	
+
+					<div class="services-item">
+						<a href="/game_play?id_game=1" class="services-item-image" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSZDT2GKCGV4MH-T7dLPHYq_TR1D1HmeqP-twa9dNN5Pt-uS5f); ">
+							<i class="fa fa-eye" aria-hidden="true"></i>
+						</a>
+						<h2>Duel</h2>
+						<p>You will get a random oponent and you have to solve a problem faster than him. </p>
+						<a href="/game_play?id_game=1" class="button">Play </a>   <a href="/rooms?id_game=1" class="button"> Rooms</a>
+					</div>
+					
+
+				</div>
+				<div class="col-md-3 col-sm-6">	
+					<div class="services-item">
+						<a href="/game_play?id_game=2" class="services-item-image" style="background-image: url(../static/assets/img/last_stand.jpeg); ">
+							<i class="fa fa-eye" aria-hidden="true"></i>
+						</a>
+						<h2>Last Stand</h2>
+						<p>A lot of oponents ,a lot of problem the one how known most will survive.</p>
+						<a href="/game_play?id_game=2" class="button">Play</a><a href="/rooms?id_game=2" class="button"> Rooms</a>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6">	
+					<div class="services-item">
+						<a href="/game_play?id_game=3" class="services-item-image" style="background-image: url(../static/assets/img/index.jpeg); ">
+							<i class="fa fa-eye" aria-hidden="true"></i>
+						</a>
+						<h2>Competitive</h2>
+						<p>You and many players try to solve problems against the enemy team. </p>
+						<a href="/game_play?id_game=3" class="button">Play</a><a href="/rooms?id_game=3" class="button"> Rooms</a>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6">	
+					<div class="services-item">
+						<a href="/game_play?id_game=4" class="services-item-image" style="background-image: url(../static/assets/img/images.jpeg); ">
+							<i class="fa fa-eye" aria-hidden="true"></i>
+						</a>
+						<h2>Contest</h2>
+						<p>You will get a random oponent and you have to solve a problem faster than him. </p>
+						<a href="/game_play?id_game=4" class="button">Play</a><a href="/rooms?id_game=4" class="button"> Rooms</a>
+					</div>
+				</div>
+
+				
+				
+			</div>
+		</div>
+	</section>
+
+<script>
+(function ($) {
+  $.fn.equalHeights = function () {
+    var $items = $(this);
+    function equalize() {
+      $items.height('initial');
+      var maxH = $items.eq(0).height();
+      $items.each(function () {
+        maxH = ($(this).height() > maxH) ? $(this).height() : maxH;
+      });
+      $items.height(maxH);
+    }
+    equalize();
+    $(window).bind('resize', function () {
+      equalize();
+    });
+  };
+})(jQuery);
+
+$(".services-item h4").equalHeights();
+$(".new-item-text ").equalHeights();
+$(".link-item ").equalHeights();
+
+</script>

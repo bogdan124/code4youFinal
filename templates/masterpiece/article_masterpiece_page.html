@@ -24,6 +24,7 @@
 <link rel="stylesheet" href="../static/assets_profile/css/to-do-list.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jodit/3.1.39/jodit.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jodit/3.1.39/jodit.min.js"></script>
 {% include  "files_after_login/header_after_login.html" %}
 
@@ -145,6 +146,22 @@ cursor:pointer;
 }
 .goog-te-banner-frame.skiptranslate {display: none !important;}
 body { top: 0px !important; }
+.tags {
+    border: 1px solid #DDD;
+    display: inline-block;
+    color: #717171;
+    background: #FFF;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(180,180,180,0.1);
+    box-shadow: 0 1px 1px 0 rgba(180,180,180,0.1);
+    -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    -o-transition: all .1s ease-in-out;
+    -ms-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+    border-radius: 2px;
+    margin: 0 3px 6px 0;
+    padding: 5px 10px;
+}
   </style>
 <div class="content">
 
@@ -165,6 +182,7 @@ body { top: 0px !important; }
     <li class="item_from_menu button_add_info" onclick="content_show(0000,0000)">Add content</li>
     <li class="item_from_menu button_add_settings" onclick="content_show_questions()">Questions</li>
     <li class="item_from_menu button_add_settings" onclick="content_show_settings()">Settings</li>
+    <li class="item_from_menu button_add_settings" onclick="content_show_problems()">Problems</li>
 
         </ul>
 
@@ -229,8 +247,8 @@ body { top: 0px !important; }
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.js">
 
   </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
 <style>
     #snackbar {
         visibility: hidden;
@@ -291,22 +309,68 @@ body { top: 0px !important; }
 	function content_show_settings()
 	{	
 		var hmtl_string=`
-			<h1><b>Settings</b></h1>
-			<hr/>
+			
 			Download pdf: <div class="replace_butt___"><button class="btn btn-primary btn-sm" onclick="pdf_work_with_data()"> Download</button></div>
 			
 		`; 
 	 // <button class="btn btn-primary btn-lg"><i class="fa fa-circle-o-notch fa-spin"></i> Download</button>
-		$(".title______").html("");
-		$(".center_show_content_title").html("");
+		$(".title______").html("Settings");
+		//$(".center_show_content_title").html("");
 		$(".text_buttons").html("");
 		$("#content_all_show_data").html(hmtl_string);
 
 	
 
 	}
+	      var url = new URL(window.location.href);
+	      var c = url.searchParams.get("id");
+	     var problems=c;
+	function content_show_problems(){
+		  $.ajax({
+		       url: "/show_data_problems?id="+problems,
+		       success: function(result){
+			console.log(result[0]);
+				$(".title______").html("Problems");
+			var show_table_problems=`
+				<table   data-toggle="table"
+  data-sortable="true" id="table_problems"  data-resizable="true" data-show-fullscreen="true"  data-search="true" data-show-pagination-switch="true" data-pagination="true" data-height="670">
+					<thead>
+					    <tr>
+						<th data-field="id" data-sortable="true">Item ID</th>
+						<th data-field="user" data-sortable="true">User</th>
+						<th data-field="name" data-sortable="true">Problem</th>
+						<th data-field="price" ></th>
+						
+					    </tr>
+					</thead>
+					<tbody>
+					</tbody>
+				    </table>
+				`;
+			
+			$(function () {
+			  //  $('#table_problems').bootstrapTable({
+				
+				//data:JSON.stringify(result)
+			  // });
+			    $('#table_problems').bootstrapTable();
+			});
+			
 
+			 $("#content_all_show_data").html(show_table_problems);
+			for(var i in result){
+				$('#table_problems tbody').append("<tr><td><center>"+result[i][0]+"</center></td><td><div class='user_out ' onclick='show_user_profile()' ><center>"+result[i][8]+"</center></div></td><td>"+result[i][2]+"</td><td><a href='/solve_problem?id_problem="+result[i][0]+"'><center><button class='btn btn-danger'>Solve</button></center></a></td></tr>");
+			}
+			
+		       }
+			
+		     });
+	
+	}
+	
+	function show_user_profile(){
 
+	}
 
 	
 	function pdf_work_with_data(){
@@ -420,9 +484,84 @@ function run_function_close(i){
 }
 
 function content_show_questions(){
+	$(".title______").html("Questions");
+ 	$("#content_all_show_data").html(`
+<div class='btn_show_menu'><select  id='name_question'>{%for i in select_masterpiece%}<option  value='{{i[3]}}'>{{i[2]}}</option>{%endfor%}</select><button onclick='content_get_questions()'  class='btn' name='button'>Create test</button></div><br/>Number of questions(max:15):<input type='number' id='num_ques'/><br/><br/>
+	
+`);
+}
+var reponses=[];
+function content_get_questions(){
+     var sel = document.getElementById('name_question');
+     var sel2=getSelectedOption(sel);
+
+ $.ajax({
+        url: "/get_question?article="+sel2+"&masterpiece={{id_article}}",
+        cache:false,
+         success: function(result){
+		
+		var d=0;
+		
+         	$("#content_all_show_data").append(result[0]+`<hr/><br/><br/>`);
+		
+			
+		var num_ques=$("#num_ques").val();
+		var il__=0;
+		while(il__<=num_ques){
+			build_question(result[1][0]);
+			il__++;
+		}
+		il__=0;
+		
+
+		/*for(var i in result[1][0]){
+			$("#content_all_show_data").append(`
+			
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>`+result[1][0][i]+`</li>
+  
+
+			`);	
+		}
+		$("#content_all_show_data").append(`</ol><br/><br/><button class='btn' name='button'>Verify</button>`);
+	*/
+          }});
 
 
 }
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+function verify_quest(reponses1,text_to_verify,gen_int){
+	reponses12=reponses1;
+	
+	if(reponses12.localeCompare(text_to_verify)==0){
+		$(".rzultat___"+gen_int).append("  (Is corect!!)");
+	}else{
+		$(".rzultat___"+gen_int).append("  (Is wrong!)");
+	}
+
+
+}
+function build_question(reponses){
+	var gen_int=getRandomInt(reponses.length-1);
+	if(gen_int<5){
+		gen_int=gen_int+5;		
+	}
+	$("#content_all_show_data").append(`<br/>`);
+	$("#content_all_show_data").append(`What is at number __`+gen_int+`__?<div class='rzultat___`+gen_int+`'></div>`);
+	
+	$("#content_all_show_data").append(`</br><p>`);
+	for(i=gen_int-5;  i <= gen_int;i++){
+		$("#content_all_show_data").append(`<div class='tags' onclick="verify_quest('`+reponses[gen_int]+`','`+reponses[i]+`',`+gen_int+`)"  href='#' >`+reponses[i]+`</div>`);
+		console.log(reponses[gen_int],reponses[i]);
+		
+	}
+	$("#content_all_show_data").append(`<hr/>`);
+	//$("#content_all_show_data").append(`<div class='tags' onclick='verify_quest(`+gen_int+`,`+reponses+`,`+reponses[gen_int]+`)' href='#' >`+reponses[gen_int]+`</div>`);
+	//$("#content_all_show_data").append(`</p><button class='btn'  name='button'>Verify</button>`);
+}
+
+
   </script>
 
 
@@ -452,9 +591,11 @@ article_masterpiece=masterpiece;
         }
       });
     }else{
-      $("#content_all_show_data").html("<div class='btn_show_menu'><select  id='name_articles'>{%for i in select_masterpiece%}<option  value='{{i[0]}}'>{{i[2]}}</option>{%endfor%}</select><button onclick='button_var()'  class='btn' name='button'>ADD</button></div><br/><textarea id='editor'></textarea><div id='button_submit'></div>");
+      $("#content_all_show_data").html(`<div class='btn_show_menu'><select  id='name_articles'>{%for i in select_masterpiece%}<option  value='{{i[0]}}'>{{i[2]}}</option>{%endfor%}</select><button onclick='button_var()'  class='btn' name='button'>ADD</button></div><br/><textarea id='editor'></textarea><div id='button_submit'></div>`);
       var editor = new Jodit('#editor');
       $(".jodit_toolbar").append("<li  class='jodit_toolbar_btn jodit_toolbar_btn-source'><a title='Change mode'>  <span onclick='add_code_view()' style='vertical-align: top;border-radius: 2px;display: inline-block;width: 30px;height: 30px;padding: 10px;margin-right:10px;' context-menu='downloadThumbnail24'><svg style='width:22px;height:22px;margin-left: -7px !important;margin-top: -5px; !important' viewBox='0 0 24 24'><path fill='#6F6F6F'  d='M8,3A2,2 0 0,0 6,5V9A2,2 0 0,1 4,11H3V13H4A2,2 0 0,1 6,15V19A2,2 0 0,0 8,21H10V19H8V14A2,2 0 0,0 6,12A2,2 0 0,0 8,10V5H10V3M16,3A2,2 0 0,1 18,5V9A2,2 0 0,0 20,11H21V13H20A2,2 0 0,0 18,15V19A2,2 0 0,1 16,21H14V19H16V14A2,2 0 0,1 18,12A2,2 0 0,1 16,10V5H14V3H16Z'></path></svg></span></a><div class='jodit_toolbar_popup jodit_toolbar_popup-open' id='show_text'  style='display: block;'><input type='text' id='insert_text__'></input><br/><button class='btn' onclick='function_insert_code()'>Insert</button> or <button class='btn' onclick='redirect_to_page()'>Add Code</button></div></li>");
+$(".text_buttons").css("display","none");
+$(".title______").html("Content");
 //add content to see programming language
   //$(".jodit_toolbar").append("");
   $("#show_text").hide();

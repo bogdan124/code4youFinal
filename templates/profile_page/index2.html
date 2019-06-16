@@ -150,6 +150,24 @@ iframe {
     border: 0px;
     height: 500px;
 }
+.list-notificacao.dropdown-menu.show {
+    left: -248px !important;
+}
+.class_down___noti{
+display:inherit !important;
+}
+#myModal {
+    margin-left: -25em !important;
+}
+.modal-content {
+    -webkit-box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    width: 90% !important;
+}
+.request_p__{
+
+height:1000px;
+}
 </style>
 
   {% include  "files_after_login/header_after_login.html" %}
@@ -226,10 +244,181 @@ iframe {
                      {% if session['review']==0%}
                       <li><a data-toggle="tab" href="#review">Review <span class="color_red glyphicon glyphicon-alert" aria-hidden="true"></span> </a></li>
                       {%endif%}
+		   <li><a data-toggle="tab" href="#requests">Requests</a></li>
+	           <li><a data-toggle="tab" href="#verify">Verify</a></li>
+	           <li><a data-toggle="tab" href="#progress">Progress</a></li>
                   </ul>
 
                   <script src="../static/assets/js/javascript_js_for_list_profile2.js"></script>
+
+
+
+<style>
+
+.progress{
+    height: 27px;
+    margin: 0;
+   
+    border-radius: 50px;
+    background: #eaedf3;
+   
+}
+.progress .progress-bar{
+    border-radius: 50px;
+}
+.progress .progress-value{
+    position: relative;
+    left: -45px;
+    top: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+@-webkit-keyframes animate-positive{
+    0% { width: 0%; }
+}
+@keyframes animate-positive {
+    0% { width: 0%; }
+}
+#progress{
+
+height:1000px;
+}
+.progress-outer{
+margin-top:10px;
+}
+.text_top_progress{
+margin-top:20px;
+
+}
+
+.progress-meter {
+	min-height: 0px;
+	border-bottom: 2px solid rgb(160, 160, 160);
+}
+
+.progress-meter > .meter {
+	position: relative;
+	float: left;
+	min-height: 15px;
+	border-width: 0px;
+	border-style: solid;
+	border-color: rgb(160, 160, 160);
+}
+
+.progress-meter > .meter-left {
+	border-left-width: 2px;
+}
+
+.progress-meter > .meter-right {
+	float: right;
+	border-right-width: 2px;
+}
+
+.progress-meter > .meter-right:last-child {
+	border-left-width: 2px;
+}
+
+.progress-meter > .meter > .meter-text {
+	position: absolute;
+	display: inline-block;
+	bottom: -20px;
+	width: 50px;
+	font-weight: 700;
+	font-size: 0.85em;
+	color: rgb(160, 160, 160);
+	text-align: left;
+}
+
+.progress-meter > .meter.meter-right > .meter-text {
+	text-align: right;
+}
+</style>
+
+
+
               <div class="tab-content">
+
+		 <div class="tab-pane " id="progress">
+			
+		<div class="container">
+		    <div class="row">
+
+
+	
+
+	<div class="col-md-8 text_top_progress2">
+			<div class="progress-meter">
+				<div class="meter meter-left" style="width: 25%;"><span class="meter-text">Meh</span></div>
+				<div class="meter meter-left" style="width: 25%;"><span class="meter-text">Sorta</span></div>
+    				<div class="meter meter-right" style="width: 25%;"><span class="meter-text">MASTER</span></div>
+				<div class="meter meter-right bord_last" style="width: 25%;"><span class="meter-text">EXPERT</span></div>
+			</div>
+		<br/><br/>
+	</div>
+
+
+
+
+			<div class="col-md-8 text_top_progress">
+				<div class="progress-type"><b>CSS / CSS3</b></div>
+			    <div class="progress-outer">
+				<div class="progress">
+				    <div class="progress-bar progress-bar-info progress-bar-striped active" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:100%;"></div>
+					
+				    <div class="progress-value">100%</div>
+				</div>
+			    </div>
+			   
+			</div>
+		<div class="col-md-8 text_top_progress">
+				<div class="progress-type"><b>CSS / CSS3</b></div>
+			    <div class="progress-outer">
+				<div class="progress">
+				    <div class="progress-bar progress-bar-info progress-bar-striped active" style="width:100%;"></div>
+					
+				    <div class="progress-value">100%</div>
+				</div>
+			    </div>
+			   
+			</div>
+
+
+
+		    </div>
+	
+		</div>
+                  
+
+						
+
+
+
+                 </div><!--/tab-pane-->
+
+
+		 <div class="tab-pane " id="requests">
+		<iframe class="request_p__" width="100%" height="1000px" src="/requests_tab"></iframe>
+	
+                  
+
+						
+
+
+
+                 </div><!--/tab-pane-->
+
+		 <div class="tab-pane " id="verify">
+
+                    
+
+
+
+                 </div><!--/tab-pane-->
+
+
                 <div class="tab-pane" id="your_tut">
                   <div class="class_all_list">
                 			<ul class="list-group add_to_list" >
@@ -306,46 +495,19 @@ iframe {
                           <div class="form-group">
 
                               <div class="col-xs-6">
-                                  <label for="first_name"><h4>First name</h4></label>
+                                  <label for="first_name"><h4>Username</h4></label>
                                   <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
                               </div>
                           </div>
                           <div class="form-group">
 
                               <div class="col-xs-6">
-                                <label for="last_name"><h4>Last name</h4></label>
+                                <label for="last_name"><h4>Website</h4></label>
                                   <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
                               </div>
                           </div>
-
-                          <div class="form-group">
-
-                              <div class="col-xs-6">
-                                  <label for="phone"><h4>Phone</h4></label>
-                                  <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
-                              </div>
-                          </div>
-
-                          <div class="form-group">
-                              <div class="col-xs-6">
-                                 <label for="mobile"><h4>Mobile</h4></label>
-                                  <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
-                              </div>
-                          </div>
-                          <div class="form-group">
-
-                              <div class="col-xs-6">
-                                  <label for="email"><h4>Email</h4></label>
-                                  <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
-                              </div>
-                          </div>
-                          <div class="form-group">
-
-                              <div class="col-xs-6">
-                                  <label for="email"><h4>Location</h4></label>
-                                  <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
-                              </div>
-                          </div>
+			
+                        
                           <div class="form-group">
 
                               <div class="col-xs-6">
@@ -353,6 +515,7 @@ iframe {
                                   <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
                               </div>
                           </div>
+			
                           <div class="form-group">
 
                               <div class="col-xs-6">
@@ -360,6 +523,42 @@ iframe {
                                   <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
                               </div>
                           </div>
+			<br/>
+			<div class="col-xs-12">
+			<h2>Social Media</h2><br/>
+			
+			</div>
+
+			<div class="form-group">
+
+                              <div class="col-xs-6">
+                                <label for="last_name"><h4>Facebook</h4></label>
+                                  <input type="text" class="form-control" name="last_name" id="last_name" placeholder="optional" title="enter your last name if any.">
+                              </div>
+                          </div>
+			<div class="form-group">
+
+                              <div class="col-xs-6">
+                                <label for="last_name"><h4>Github</h4></label>
+                                  <input type="text" class="form-control" name="last_name" id="last_name" placeholder="optional" title="enter your last name if any.">
+                              </div>
+                          </div>
+			
+			<div class="form-group">
+
+                              <div class="col-xs-6">
+                                <label for="last_name"><h4>Twitter</h4></label>
+                                  <input type="text" class="form-control" name="last_name" id="last_name" placeholder="optional" title="enter your last name if any.">
+                              </div>
+                          </div>
+			<div class="form-group">
+
+                              <div class="col-xs-6">
+                                <label for="last_name"><h4>Google</h4></label>
+                                  <input type="text" class="form-control" name="last_name" id="last_name" placeholder="optional" title="enter your last name if any.">
+                              </div>
+                          </div>
+
                           <div class="form-group">
                                <div class="col-xs-12">
                                     <br>
@@ -511,7 +710,7 @@ iframe {
           <div class="modal-dialog .modal-align-center">
               <div class="modal-content">
                   <div class="modal-header">
-                      <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                      <h4 class="modal-title" id="myModalLabel">Create Questions</h4>
                       <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span>
 
                       </button>
@@ -520,11 +719,11 @@ iframe {
                   </div>
                   <div class="modal-body">
 
-                    <div class="page_1">
+                    <div class="page_1 " id="page_question">
                       <center>
                       <div class="page_12">Switch what wou want?</div>
-                      <div class="left_problem"><button class="btn btn-primary left">Problem</button></div>
-                        <div class="right_question"><button class="btn btn-primary right">Question</button></div>
+                      <div class="left_problem"><button class="btn btn-primary left" onclick="problem(1)">Problem</button></div>
+                        <div class="right_question"><button class="btn btn-primary onclick="problem(2)" right">Question</button></div>
                         </center>
                     </div>
 
@@ -542,6 +741,66 @@ iframe {
 
 
  <script>
+
+
+function problem(show_data){
+
+var quest=`
+<div class="all_problem">
+<h5><b>Write problem</b></h5>
+<textarea id='text_problem' name='message' style="width:98%;" class='span6' placeholder='Write problem ...' rows='5' cols='3'></textarea>
+<br/>
+<h5><b>Output</b></h5>
+<textarea id='problem_output' name='message' style="width:98%;" class='span6' placeholder='Problem output...' rows='3'></textarea>
+<br/>
+<h5><b>Problem code</b></h5><div class="help_see_problem">(this code is for help )<div>
+<textarea id='problem_code' name='message' class='span6' style="width:98%;" placeholder='Problem code...' rows='5'></textarea>
+<br/>
+<br/>
+<h5><b>Language</b></h5><div class="help_see_problem">(please write with capitalise letter )<div>
+<input type="text" id='problem_language' placeholder="ex:Python" class="language"/>
+<br/>
+<div class="succcccces__"></div>
+<button type="button" style="width:100%;" onclick='run_code_send_server(1)' class="btn btn-primary">Save</button>
+<br/>
+<br/>
+<br/>
+</div>
+`;
+$("#page_question").html(quest);
+
+}
+
+function run_code_send_server(server){
+
+if(server==1){
+var text_problem = $("#text_problem").val();
+var problem_output = $("#problem_output").val();
+var problem_code = $("#problem_code").val();
+var problem_language = $("#problem_language").val();
+ $.ajax({
+url: "/eval_problems?id=1", 
+method:"POST",
+contentType:"application/json",
+data:JSON.stringify({
+"text_problem":text_problem,
+"problem_output":problem_output,
+"problem_code":problem_code,
+"problem_language":problem_language,
+}),
+success: function(result){
+    $(".succcccces__").html(result);
+  }
+});
+}else{
+
+
+}
+
+
+}
+
+
  var editor = new Jodit('#editor', {
      extraButtons: [
          {

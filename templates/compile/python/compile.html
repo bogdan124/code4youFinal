@@ -7,8 +7,8 @@
 
 
   <meta charset='UTF-8'>
-  <meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
-  <link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
+
+ 
   <link rel="canonical" href="https://codepen.io/Diakogiannis/pen/XdpjEJ?limit=all&page=12&q=editor" />
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.44.0/codemirror.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.44.0/theme/3024-night.css">
@@ -109,25 +109,76 @@ margin-right:123px;
 float:right;
 
 }
+#problem__ {
+    margin: 1%;
+    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+}
+.language__,.language__:hover{
+text-decoration:none;
+color:white;
+
+}
+.problem__solved{
+color:green;
+}
+#problem__ {
+    width: 45% !important;
+}
+.move_left_button {
+    float: right;
+    width: 42%;
+    margin-top: -300px;
+}
+.flip-clock-label ,.flip-clock-divider.minutes{
+    display: none !important;
+}
+.flip-clock-label,
+.flip-clock-divider.days,
+.flip-clock-divider.hours,
+.clock ul:nth-child(1),
+.clock ul:nth-child(2),
+.clock ul:nth-child(3)
+{
+    display: none !important;
+}
+.your-clock.flip-clock-wrapper {
+    align-content: center;
+    margin-left: 50em;
+}
+#game_down_countdown {
+    position: fixed;
+    bottom: 0em;
+    right: 0em;
+}
 </style>
 <body>
 <section class="up_header">
 <button type="button" class="btn_go_run btn btn-success" onclick='runit()'>Run</button>
 <button type="button" class="btn_go_run btn btn-success" data-toggle="modal" data-target="#exampleModal">Github</button>
-<button type="button" class="btn_go_run btn btn-success" onclick=''>Github</button>
+<button type="button" class="btn_go_run btn btn-success" data-toggle="modal" data-target="#exampleModal_language">Language</button>
 <img class="user_photo" width="30px" height="30px" src="https://image.flaticon.com/icons/png/128/149/149071.png">
 </section>
 
  
 			<section id='wrapper'>
-				
-
-
+			{%if default==0 and id_problem!=-1%}	
+			{%for i in fetc1%}<div id="problem__solved"></div>
+				<div id="problem__"> <strong>Problem:</strong><br/> <br/>{{ i[2] | safe }}</div>
+			{%endfor%}
+			{%endif%}
+		<div class="move_left_button">
+		
+		</div>
 				<section class="codeContainer" id="htmlContainer">
 					
+					{%if default==1 %}
 					  {%for i in fetch%}
 					<textarea class="codemirror-textarea" id="yourcode">{{i[1]}}</textarea>
 					  {%endfor%}
+					{%endif%}
+					{%if default==0%}
+					<textarea class="codemirror-textarea" id="yourcode"></textarea>
+					{%endif%}
 				</section>
 
 				<section class="codeContainer code_conta" id="resultContainer">
@@ -137,6 +188,61 @@ float:right;
 					
 				</section>
 			</section>
+{% if no_clock != True %}
+{% if game != -1 %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.css">
+<section  id="game_down_countdown">
+		<center><div class="your-clock" ></div></center>
+		
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.js"></script>
+<script>
+
+var clock = $('.your-clock').FlipClock(300, {
+		countdown: true,
+		clockFace: 'MinuteCounter'
+	});
+</script>
+	
+</section>
+{% endif %}
+
+
+{% endif %}
+
+<div class="modal fade" id="exampleModal_language" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Languages</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+    	
+	<div class="container">
+	<div class="row">
+		
+
+	{%if default==0 %}	
+		<a class='language__' href='/compile_python?default=0&id_problem={{ id_problem | safe }}&language=Ruby&game={{game}}'><button type="button" class="btn_go_run btn btn-success">Ruby</button></a>
+		<a class='language__' href='/compile_python?default=0&id_problem={{ id_problem | safe }}&language=Bash&game={{game}}'><button type="button" class="btn_go_run btn btn-success">Bash</button></a>
+		<a class='language__' href='/compile_python?default=0&id_problem={{ id_problem | safe }}&language=Python&game={{game}}'><button type="button" class="btn_go_run btn btn-success">Python</button></a>
+		<a class='language__' href='/compile_python?default=0&id_problem={{ id_problem | safe }}&language=Python&game={{game}}'><button type="button" class="btn_go_run btn btn-success">Help</button></a>
+			{%endif%}
+
+
+        </div>
+	</div>
+</div>
+
+      </div>
+    
+    </div>
+  </div>
+</div>
+
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -302,7 +408,20 @@ function runit() {
 	"data":	prog
 	}),
 	success: function(result){
-    	   $(".edoutqqput").html(result);
+		{%if default==0 and id_problem!=-1%}	
+			{%for i in fetc1%}
+				if({{i[3]}}==result){
+					$("#problem__solved").html("Solved");
+					alert("Good answer!");
+					$("#problem__solved").css("color","red");
+				}else{
+					
+					alert("Wrong answer!");
+				}
+	    	  	 
+			{%endfor%}
+		{%endif%}
+		$(".edoutqqput").html(result);
    	}
   });    
 	
