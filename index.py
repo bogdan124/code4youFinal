@@ -2,6 +2,8 @@ from flask import Flask,render_template,session,url_for,redirect,request,jsonify
 from flask_socketio import SocketIO
 import pymysql
 import os
+import datetime
+from random import randint
 from werkzeug.utils import secure_filename
 from summarize_text import first_class
 from recomandation_engine import recomandation_engine
@@ -67,27 +69,26 @@ def login():
        connection.commit()
     finally:
        connection.close()   
-    error=None
+    error=""
     global uname_general_user
 
     if request.method=='POST' :
         uname_pass = hashlib.sha256(request.form['pass']).hexdigest()
 
-        for i in con.fetchall():
-            print(str(uname_pass),str(i[2]))
+        for i in con.fetchall():          
             if request.form['uname']==i[1] and str(uname_pass)==str(i[2]):
                  uname_user=request.form['uname']
-                 uname_pass=hashlib.sha256(request.form['pass']).hexdigest()
-                 print(uname_pass)
+                 uname_pass=hashlib.sha256(request.form['pass']).hexdigest()              
 		 connection=pymysql.connect(host='localhost',use_unicode=True,charset="utf8",user='root',password='',db='code4you',autocommit=True)
 		 try:
 		    with connection.cursor() as con: 
-		         sqkl="SELECT * FROM user_data WHERE uname='"+str(uname_user)+"' AND pass='"+uname_pass+"'"	
-		         con.execute(sqkl)		
+			 sqkl1="SELECT * FROM user_data WHERE uname=%(uname)s AND pass=%(pass)s"			      
+		         con.execute(sqkl1, {'uname': uname_user,'pass':uname_pass})		
 		         rewq=con.fetchall()
 		    connection.commit()
 		 finally:
 		    connection.close()   
+		 print(rewq)
                  session['connect']='connect'
                  connect=session['connect']
                  session['id']=i[0]
@@ -105,7 +106,8 @@ def login():
                         return redirect(url_for('profile2',id=id12,connect=connect))
             else:
                        error="wrong name or password"
-    return render_template('login.html')
+       
+    return render_template('login.html',error=error)
 
 @app.route("/logout",methods=['POST','GET'])
 def logout():
@@ -330,8 +332,10 @@ def data_comunity_upload():
     connection=pymysql.connect(host='localhost',use_unicode=True,charset="utf8",user='root',password='',db='code4you',autocommit=True)
     try:
 	with connection.cursor() as con:
-   		 sql="INSERT INTO comunity VALUES('0','"+str(var_4)+"','//placeimg.com/280/180/tech','"+str(var_1)+"','"+str(var_2)+"','','0','"+str(session['id'])+"','0','0','"+str(var_3)+"')"       
-    		 con.execute(sql)
+		 sqkl1="INSERT INTO comunity VALUES('0',%(var_4)s,'//placeimg.com/280/180/tech',%(var_1)s,%(var_2)s,'','0',%(seseid)s,'0','0',%(var_3)s)"			      
+		 con.execute(sqkl1, {'var_1': var_1,'var_2':var_2,'seseid':session['id'],'var_3':var_3,'var_4':var_4})	
+   		## sql="INSERT INTO comunity VALUES('0','"+str(var_4)+"','//placeimg.com/280/180/tech','"+str(var_1)+"','"+str(var_2)+"','','0','"+str(session['id'])+"','0','0','"+str(var_3)+"')"       
+    		## con.execute(sql)
         connection.commit()
     finally:
     	connection.close()  
@@ -489,6 +493,12 @@ def select_user_data():
     	connection.close()   
     return jsonify(show)
 
+
+@app.route('/requests_tab',methods=['POST','GET'])
+def requests_tab():
+	return render_template("popup/request_tab.html")
+
+
 @app.route('/search_all',methods=['POST','GET'])
 def search_for_all():
     find_out_data=request.args['search_parameter']
@@ -516,6 +526,102 @@ def select_data_post_tutorias():
     	connection.close() 
     return jsonify(data)
 
+
+@app.route('/games',methods=['POST','GET'])
+def games():
+    return render_template("/games/games.html")
+
+@app.route('/game_play',methods=['POST','GET'])
+def game_play():
+    id_game=request.args['id_game']
+    connection=pymysql.connect(host='localhost',use_unicode=True,charset="utf8",user='root',password='',db='code4you',autocommit=True)
+    try:
+	with connection.cursor() as con:
+                sql="SELECT count(id) FROM problems"
+                fetch = con.execute(sql)
+		fetch = con.fetchall()
+	connection.commit()
+    finally:
+        connection.close() 
+    gen=0
+    for i in fetch:
+	gen=i
+    print(gen[0])
+    gen=randint(1, int(gen[0]))
+    gen_a_game_id=randint(1, 12309)
+    ##duel->1
+    ##last_stand->2
+    ##competitive->3
+    ##contest->4
+    now = datetime.datetime.now()
+    print now.year, now.month, now.day, now.hour, now.minute, now.second
+    time_start = str(now.year)+"-"+str(now.month)+"-"+str(now.day)+" "+str(now.hour)+":"+str(now.minute)+":"+str(now.second)
+    time_end = str(now.year)+"-"+str(now.month)+"-"+str(now.day)+" "+str(now.hour)+":"+str(now.minute+5)+":"+str(now.second)
+    connection=pymysql.connect(host='localhost',use_unicode=True,charset="utf8",user='root',password='',db='code4you',autocommit=True)
+    try:
+	with connection.cursor() as con:
+                sql="INSERT INTO games_code_play VALUES('"+str(gen_a_game_id)+"','"+str(session['id'])+"','','','','','','"+str(id_game)+"','"+time_start+"','"+time_end+"','"+str(gen)+"','')"
+                fetch = con.execute(sql)		
+	connection.commit()
+    finally:
+        connection.close() 	
+
+    return redirect(url_for("compile_python",default=0,id_problem=gen,game=id_game))
+
+
+
+@app.route('/rooms_get',methods=['POST','GET'])
+def rooms_get():
+    id_game=request.args['id_game']
+    connection=pymysql.connect(host='localhost',use_unicode=True,charset="utf8",user='root',password='',db='code4you',autocommit=True)
+    try:
+	with connection.cursor() as con:
+                sql="SELECT * FROM  games_code_play "
+                fetch = con.execute(sql)
+                fetch = con.fetchall()				
+	connection.commit()
+    finally:
+        connection.close() 	
+    return jsonify(fetch)
+
+@app.route('/rooms',methods=['POST','GET'])
+def rooms():
+	game=request.args['id_game']
+        connection=pymysql.connect(host='localhost',use_unicode=True,charset="utf8",user='root',password='',db='code4you',autocommit=True)
+        try:
+	   with connection.cursor() as con:
+		        sql="DELETE  FROM  games_code_play WHERE time_end <= CURRENT_TIMESTAMP()"
+		        con.execute(sql)
+		       			
+	   connection.commit()
+        finally:
+           connection.close() 	
+	
+	if int(game)==4:
+	     return redirect(url_for("contest",id_game=game))
+	else:	
+	     return render_template("games/rooms.html")
+
+@app.route('/room_add_player',methods=["POST","GET"])
+def room_add_player():
+	default=request.args['default']
+	game=request.args['game']
+	id_problem=request.args['id_problem']
+	code_game=request.args['code_game']
+        connection=pymysql.connect(host='localhost',use_unicode=True,charset="utf8",user='root',password='',db='code4you',autocommit=True)
+        try:
+	   with connection.cursor() as con:
+		        sql="UPDATE games_code_play  SET id_user_2="+str(session['id'])+" WHERE id_game="+str(code_game)+" AND game_type_id="+str(game)
+		        con.execute(sql)
+		       			
+	   connection.commit()
+        finally:
+           connection.close() 
+	return redirect(url_for('compile_python',default=default,game=game,id_problem=id_problem))
+
+@app.route('/contest',methods=['POST','GET'])
+def contest():
+	return render_template("games/contest.html")
 
 @app.route('/back_upload2',methods=['POST','GET'])
 def back_upload2():
@@ -624,12 +730,16 @@ def compile_python():
 	default=request.args.get("default")
     else:
 	default=1
-    
+    if 'game' in request.args:
+    	game=request.args.get("game")	
+    else:
+	game=-1
+    print(game)
     if 'id_problem' in request.args:
     	id_problem=request.args.get("id_problem")
     else:
 	id_problem=-1
-    print(default,id_problem)
+   
     if int(default) == 1 and int(id_problem)==-1:
 	    code_id=request.args.get('code_id')
 	    language=request.args.get('language')
@@ -644,7 +754,7 @@ def compile_python():
 			connection.commit()
 		    finally:
 			connection.close() 
-	    return render_template("compile/python/compile.html",fetch=fetch,default=int(default))
+	    return render_template("compile/python/compile.html",fetch=fetch,default=int(default),no_clock=True)
 
     if int(default)==0:
 	if  int(id_problem)!=-1:
@@ -657,12 +767,16 @@ def compile_python():
 		connection.commit()
 	    finally:
 		connection.close() 
-
-	    return render_template("compile/python/compile.html",default=int(default),id_problem=int(request.args["id_problem"]),fetc1=fetc1)
+	    if int(game)!=-1:
+	    	return render_template("compile/python/compile.html",default=int(default),id_problem=int(request.args["id_problem"]),fetc1=fetc1,game=int(game),no_clock=False)
+	    elif int(game)==-1:
+	    	return render_template("compile/python/compile.html",default=int(default),id_problem=int(request.args["id_problem"]),fetc1=fetc1,game=int(game),no_clock=False)		
 	elif int(id_problem)==-1:
-	    return render_template("compile/python/compile.html",default=int(default),id_problem=int(request.args["id_problem"]))
+	    return render_template("compile/python/compile.html",default=int(default),id_problem=int(request.args["id_problem"]),no_clock=False)
     else:
 	return "it was a parameter error"
+
+    
 	    
 @app.route('/solve_problem',methods=['POST','GET'])
 def solve_problem():
