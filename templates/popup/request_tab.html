@@ -44,10 +44,10 @@ top:16px;
 					<div class="content">
 						<div class="row">
 							<div class="col-sm-9">
-						          <input type="text" class="form-control" name="first_name" id="first_name" placeholder="add masterpiece" >
+						          <input type="text" class="form-control" name="first_name" id="masterpiece_name" placeholder="add masterpiece" >
 							   </div>
 							<div class="col-sm-3">
-								<button class="btn btn-primary ladda-button">Add</button>
+								<button onclick=send_masterpiece() class="btn btn-primary ladda-button">Add</button>
 							</div>
 					       	</div>
 					</div>
@@ -75,3 +75,19 @@ top:16px;
 			<br/>
 			
                   	</form>
+
+		<script>
+			funtion send_masterpiece(){
+			       var name_masterpiece=$(".masterpiece_name").val();
+				  $.ajax({
+					url: "/create_masterpiece?masterpiece_name="+name_masterpiece,
+					 success: function(result){
+				   	 $("#div1").html(result);
+				  }
+				});
+				
+
+			}
+		</script>
+
+
