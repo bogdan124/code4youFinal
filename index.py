@@ -792,6 +792,11 @@ def integration():
     sql=con.fetchall()
     return render_template("admin_folders/integration_api.html",sql=sql)
 
+
+
+
+
+
 @app.route('/code_analise',methods=['POST','GET'])
 def code_analise():
     language=request.args['language']
@@ -847,6 +852,21 @@ def eval_problems():
 		        connection.close() 
 		
 	return "Succes"
+
+
+@app.route('/create_masterpiece',methods=['POST','GET'])
+def create_masterpiece():
+	masterpiece_name=request.args['masterpiece_name']
+	connection=pymysql.connect(host='localhost',use_unicode=True,charset="utf8",user='root',password='',db='code4you',autocommit=True)
+	try:
+	   with connection.cursor() as con:
+		sql="INSERT INTO verify_masterpiece VALUES('','"+str(session['id'])+"','"+str(masterpiece_name)+"')"   
+		con.execute(sql)				
+		connection.commit()
+
+	finally:
+          connection.close() 
+	return "ok"	
 
 
 @app.route('/show_data_problems',methods=['POST','GET'])
