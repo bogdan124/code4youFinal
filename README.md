@@ -7,3 +7,5 @@ Site-ul dispune de 3 tipuri de tutoriale ,cum ar fi :
 “Community”- sunt scrise de catre comunitate si pot fi free sau pot avea o valoare monetara, ajutand la sustinerea site-ului in cazul lansarii acestuia<br/>
 “Masterpiece”- pot fi scrise de oricine care are cont pe platforma iar informatia de acolo este ajustata in functie de nevoile utilizatorului (folosesc KNN pentru a gasi similaritatile dintre utilizatori astfel continutul paginii se ajusteaza in functie de ce am descoperit ca le place, de la rezumate la text pana la schimbarea culorilor );<br/>
 Site-ul dispune de un compiler si un IDE (l-am numit Dcode) pentru a putea rula codul care se gaseste in tutoriale (codul care poate fi rulat in momentul de fata este Python, Bash, Ruby, Html, Javascript, Css,)
+<img src="http://data.infoeducatie.ro/uploads/screenshot/screenshot/1135/infoedu1.png"/>
+<img src="http://data.infoeducatie.ro/uploads/screenshot/screenshot/1136/infoedu2.png"/>
